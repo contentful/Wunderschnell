@@ -240,7 +240,7 @@ public class SphereIOClient {
 
     public func createOrder(forCart cart: [String:AnyObject], _ completion: SphereClosure) {
         if let cartId = cart["id"] as? String, cartVersion = cart["version"] as? Int {
-            performAuthenticatedRequest(completion, "\(project)/orders", .POST, ["version": cartVersion.toNumber(), "id": cartId])
+            performAuthenticatedRequest(completion, "\(project)/orders", .POST, ["version": cartVersion.toNumber(), "id": cartId, "orderNumber": cartId])
         } else {
             fatalError("Could not create order for cart")
         }
