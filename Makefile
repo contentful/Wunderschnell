@@ -5,4 +5,4 @@ all:
 		-scheme WatchButton -sdk iphonesimulator build CODE_SIGN_IDENTITY=-
 
 pod:
-	pod install --no-repo-update
+	bundle exec pod install --no-repo-update

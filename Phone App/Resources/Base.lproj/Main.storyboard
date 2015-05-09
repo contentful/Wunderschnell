@@ -1,25 +1,107 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E11f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="osV-g4-eIh">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Wunderschnell-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="WatchButton" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ED1-ng-FAf">
+                                <rect key="frame" x="26" y="74" width="548" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Or7-RG-Eqk">
+                                <rect key="frame" x="36" y="117" width="528" height="528"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Or7-RG-Eqk" secondAttribute="height" multiplier="1:1" id="mxD-KM-Ghq"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKF-eK-Xwa" userLabel="Product Description">
+                                <rect key="frame" x="36" y="655" width="528" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 EUR" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agm-l2-PGV">
+                                <rect key="frame" x="36" y="675" width="528" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="ED1-ng-FAf" secondAttribute="centerX" id="2uQ-dm-Zzu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ED1-ng-FAf" secondAttribute="trailing" constant="10" id="DF9-VF-oib"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OKF-eK-Xwa" secondAttribute="trailing" constant="20" id="Egi-IU-IwK"/>
+                            <constraint firstItem="agm-l2-PGV" firstAttribute="top" secondItem="OKF-eK-Xwa" secondAttribute="bottom" constant="20" id="HbB-Ix-aIt"/>
+                            <constraint firstItem="Or7-RG-Eqk" firstAttribute="top" secondItem="ED1-ng-FAf" secondAttribute="bottom" constant="10" id="Igv-px-wWH"/>
+                            <constraint firstItem="OKF-eK-Xwa" firstAttribute="top" secondItem="Or7-RG-Eqk" secondAttribute="bottom" constant="10" id="LbR-sN-yN9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="agm-l2-PGV" secondAttribute="trailing" constant="20" id="PGh-WE-T7Y"/>
+                            <constraint firstItem="Or7-RG-Eqk" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="QtB-Zy-hpt"/>
+                            <constraint firstItem="ED1-ng-FAf" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="SYu-UR-9ad"/>
+                            <constraint firstItem="ED1-ng-FAf" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="10" id="VGn-dJ-1Nr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Or7-RG-Eqk" secondAttribute="trailing" constant="20" id="XPa-sr-7jS"/>
+                            <constraint firstItem="OKF-eK-Xwa" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="eqj-98-X41"/>
+                            <constraint firstItem="agm-l2-PGV" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="sYa-ZR-x5h"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="2uQ-dm-Zzu"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Wunderschnell" id="yke-js-wZW">
+                        <barButtonItem key="rightBarButtonItem" title="Set up Payment" id="DXo-Vo-GBa">
+                            <connections>
+                                <action selector="setUpPaymentTapped:" destination="vXZ-lx-hvc" id="j8f-SL-rPg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="1000"/>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="OKF-eK-Xwa" id="BzK-V0-1KZ"/>
+                        <outlet property="nameLabel" destination="ED1-ng-FAf" id="bKO-BC-acM"/>
+                        <outlet property="priceLabel" destination="agm-l2-PGV" id="gcb-a2-a7V"/>
+                        <outlet property="productImageView" destination="Or7-RG-Eqk" id="bEQ-Nq-8Il"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1050" y="265"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="c1b-us-i6k">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="osV-g4-eIh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5gb-BK-svZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="lR0-MY-btV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FZ8-49-PH9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="238" y="-428"/>
         </scene>
     </scenes>
 </document>

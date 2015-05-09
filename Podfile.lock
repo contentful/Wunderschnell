@@ -25,18 +25,36 @@ PODS:
     - AFNetworking (>= 2.5.3)
     - ISO8601DateFormatter
   - ISO8601DateFormatter (0.7)
+  - KeychainAccess (1.2.0)
+  - Keys (1.0.0)
+  - MMWormhole (1.1.1):
+    - MMWormhole/Core (= 1.1.1)
+  - MMWormhole/Core (1.1.1)
+  - PayPal-iOS-SDK (2.10.1)
   - Result (0.3.2)
 
 DEPENDENCIES:
   - Alamofire
   - ContentfulDeliveryAPI
+  - KeychainAccess
+  - Keys (from `Pods/CocoaPodsKeys/`)
+  - MMWormhole
+  - PayPal-iOS-SDK
   - Result
+
+EXTERNAL SOURCES:
+  Keys:
+    :path: Pods/CocoaPodsKeys/
 
 SPEC CHECKSUMS:
   AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
   Alamofire: 1acfdf179aff68b41a48dff70c1ac7fa263e2bcb
   ContentfulDeliveryAPI: 7c50f9ff2ef361ff1622bee630ed9aaac5f24a2d
   ISO8601DateFormatter: ab926648eebe497f4d167c0fd083992f959f1274
+  KeychainAccess: 6ff20bd4990b4840d8bde4e977f8c58e0fe7f3c1
+  Keys: 253e4d01f8fe0a795e628b0040257c99f6ab7eab
+  MMWormhole: 941cd168b4afd6073f883b82944d6eded4e00203
+  PayPal-iOS-SDK: b7143e1e3ce51a82833c50bdac696a7a40852684
   Result: 81c3da19af8fbc2ecfb21edce137dc5b23b3659b
 
-COCOAPODS: 0.37.0
+COCOAPODS: 0.37.1

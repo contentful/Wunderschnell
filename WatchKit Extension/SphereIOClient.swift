@@ -250,6 +250,24 @@ public class SphereIOClient {
         performAuthenticatedRequest(completion, "\(project)/orders/\(orderId)")
     }
 
+    public func quickOrder(# product: [String:AnyObject], to address: Address, _ completion: SphereClosure) {
+        let currency = address.country == "DE" ? "EUR" : "USD"
+
+        createCart(currency) { (result) in
+            result.analysis(ifSuccess: { (cart) in
+                self.addProduct(product, quantity: 1, toCart: cart) { (result2) in
+                    result2.analysis(ifSuccess: { (cart2) in
+                        self.addShippingAddress(address, toCart: cart2) { (result3) in
+                            result3.analysis(ifSuccess: { (cart3) in
+                                self.createOrder(forCart: cart3, completion)
+                            } , ifFailure: { (error) in completion(result: SphereResult(error: error)) })
+                        }
+                    }, ifFailure: { (error) in completion(result: SphereResult(error: error)) })
+                }
+            }, ifFailure: { (error) in completion(result: SphereResult(error: error)) })
+        }
+    }
+
     public func setPaymentState(state: PaymentState, forOrder order: [String:AnyObject], _ completion: SphereClosure) {
         performAction(["action": "changePaymentState", "paymentState": state.rawValue], onOrder: order, completion)
     }
