@@ -20,10 +20,8 @@ pod 'Result'
 
 target 'WatchButton WatchKit Extension', :exclusive => true do
 
-pod 'Alamofire'
 pod 'ContentfulDeliveryAPI'
 pod 'MMWormhole'
-pod 'Result'
 
 end
 

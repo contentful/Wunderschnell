@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		15BF336A323A6BFEA166A568 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD8A85CEC34E4A816905356 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		67A173157CB327BFBC49A88E /* Pods_WatchButton_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E33E15F117981233A87312 /* Pods_WatchButton_WatchKit_Extension.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		A1AAA6A81AFE86CD000D4227 /* PayPalClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AAA6A71AFE86CD000D4227 /* PayPalClient.swift */; };
 		A1AAA6A91AFE8950000D4227 /* PayPalClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AAA6A71AFE86CD000D4227 /* PayPalClient.swift */; };
 		A1AAA6AB1AFE93A0000D4227 /* PaymentKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AAA6AA1AFE93A0000D4227 /* PaymentKeychain.swift */; };
 		A1AAA6AD1AFE97C4000D4227 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AAA6AC1AFE97C4000D4227 /* Commands.swift */; };
@@ -26,9 +25,10 @@
 		A1CF8D6A1AFE1332005EDE51 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1CF8D681AFE1332005EDE51 /* Interface.storyboard */; };
 		A1CF8D6C1AFE1332005EDE51 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1CF8D6B1AFE1332005EDE51 /* Images.xcassets */; };
 		A1CF8D6F1AFE1332005EDE51 /* WatchButton WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A1CF8D551AFE1332005EDE51 /* WatchButton WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		A1CF8D791AFE297A005EDE51 /* SphereIOClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF8D781AFE297A005EDE51 /* SphereIOClient.swift */; };
 		A1CF8D7A1AFE35A0005EDE51 /* SphereIOClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF8D781AFE297A005EDE51 /* SphereIOClient.swift */; };
 		A1ED03441AFE9F7D00570757 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ED03431AFE9F7D00570757 /* Product.swift */; };
+		A1ED03451AFEAD1100570757 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ED03431AFE9F7D00570757 /* Product.swift */; };
+		A1ED03471AFEB10B00570757 /* PaymentAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ED03461AFEB10B00570757 /* PaymentAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +89,7 @@
 		A1CF8D781AFE297A005EDE51 /* SphereIOClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SphereIOClient.swift; sourceTree = "<group>"; };
 		A1E9A40C1AFE742D00C28085 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		A1ED03431AFE9F7D00570757 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		A1ED03461AFEB10B00570757 /* PaymentAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentAlert.swift; sourceTree = "<group>"; };
 		B55E260FC8FD7B66A309B885 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		FFD8A85CEC34E4A816905356 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -147,8 +148,8 @@
 				A1CF8D651AFE1332005EDE51 /* WatchKit App */,
 				A1CF8D561AFE1332005EDE51 /* WatchKit Extension */,
 				5215D1152283133381C73C7C /* Frameworks */,
-				A1CF8D2D1AFE1325005EDE51 /* Products */,
 				79BABAA6B1ABEBFAFB3F36E8 /* Pods */,
+				A1CF8D2D1AFE1325005EDE51 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -193,6 +194,7 @@
 				A1CF8D5D1AFE1332005EDE51 /* Images.xcassets */,
 				A1CF8D591AFE1332005EDE51 /* InterfaceController.swift */,
 				A1CF8D581AFE1332005EDE51 /* Info.plist */,
+				A1ED03461AFEB10B00570757 /* PaymentAlert.swift */,
 				A1CF8D781AFE297A005EDE51 /* SphereIOClient.swift */,
 			);
 			path = "WatchKit Extension";
@@ -462,11 +464,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1CF8D791AFE297A005EDE51 /* SphereIOClient.swift in Sources */,
 				A1CF8D5A1AFE1332005EDE51 /* InterfaceController.swift in Sources */,
 				A1CF8D5C1AFE1332005EDE51 /* GlanceController.swift in Sources */,
+				A1ED03471AFEB10B00570757 /* PaymentAlert.swift in Sources */,
 				A1AAA6AE1AFE97C4000D4227 /* Commands.swift in Sources */,
-				A1AAA6A81AFE86CD000D4227 /* PayPalClient.swift in Sources */,
+				A1ED03451AFEAD1100570757 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

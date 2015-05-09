@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             let currency = pp.price["currency"]!
 
                             client.pay(retrievePaymentId(), currency, amount) { (paid) in
-                                reply(["paid": paid])
+                                reply([Reply.Paid.rawValue: paid])
 
                                 self.sphereClient.setPaymentState(paid ? .Paid : .Failed, forOrder: order) { (result) in
                                     println("Payment state result: \(result)")
