@@ -3,11 +3,17 @@ use_frameworks!
 
 target 'WatchButton' do
 
+pod 'Alamofire'
+pod 'ContentfulDeliveryAPI'
+pod 'Result'
+
 end
 
 target 'WatchButton WatchKit Extension' do
 
+pod 'Alamofire'
 pod 'ContentfulDeliveryAPI'
+pod 'Result'
 
 end
 

@@ -20,17 +20,23 @@ PODS:
   - AFNetworking/UIKit (2.5.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - Alamofire (1.2.1)
   - ContentfulDeliveryAPI (1.7.3):
     - AFNetworking (>= 2.5.3)
     - ISO8601DateFormatter
   - ISO8601DateFormatter (0.7)
+  - Result (0.3.2)
 
 DEPENDENCIES:
+  - Alamofire
   - ContentfulDeliveryAPI
+  - Result
 
 SPEC CHECKSUMS:
   AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
+  Alamofire: 1acfdf179aff68b41a48dff70c1ac7fa263e2bcb
   ContentfulDeliveryAPI: 7c50f9ff2ef361ff1622bee630ed9aaac5f24a2d
   ISO8601DateFormatter: ab926648eebe497f4d167c0fd083992f959f1274
+  Result: 81c3da19af8fbc2ecfb21edce137dc5b23b3659b
 
 COCOAPODS: 0.37.0

@@ -13,7 +13,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        let myAddress = Address(firstName: "YOLO Bert", lastName: "Thiefenthaler", streetName: "Ritterstr.", streetNumber: "23", postalCode: "10249", city: "Berlin", country: "DE")
+
+        let client = SphereIOClient(clientId: "krcX5hT2bH6Z-zIN-DArpWko", clientSecret: "qa3deqJ-PV6p9pN_UgLxLnZ4JjTx3Q3o", project: "ecomhack-demo-67")
+
+        client.fetchProductData() { (result) in
+            if let value = result.value, results = value["results"] as? [[String:AnyObject]], product = results.first {
+                //println(product)
+
+                client.createCart("EUR") { (result) in
+                    if let cart = result.value {
+                        client.addProduct(product, quantity: 1, toCart: cart) { (result) in
+                            if let cart = result.value {
+                                client.addShippingAddress(myAddress, toCart: cart) { (result) in
+                                    if let cart = result.value {
+                                        client.createOrder(forCart: cart) { (result) in
+                                            if let order = result.value {
+                                                client.setPaymentState(.Paid, forOrder: order) { (result) in
+                                                    println(result)
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
         return true
     }
 
