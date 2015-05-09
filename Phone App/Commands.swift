@@ -8,7 +8,9 @@
 
 import Foundation
 
+public let AppGroupIdentifier = "group.vu0.org.WatchButton"
 public let CommandIdentifier = "org.vu0.command"
+public let DirectoryIdentifier = "WatchButton"
 
 public enum Command : String {
     case GetProduct = "GetProducts"

@@ -90,6 +90,8 @@
 		A1E9A40C1AFE742D00C28085 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		A1ED03431AFE9F7D00570757 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		A1ED03461AFEB10B00570757 /* PaymentAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentAlert.swift; sourceTree = "<group>"; };
+		A1ED03481AFEBE6F00570757 /* WatchButton.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = WatchButton.entitlements; path = ../WatchButton.entitlements; sourceTree = "<group>"; };
+		A1ED03491AFEBEA500570757 /* WatchButton WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "WatchButton WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		B55E260FC8FD7B66A309B885 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		FFD8A85CEC34E4A816905356 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -183,6 +185,7 @@
 			children = (
 				A1E9A40C1AFE742D00C28085 /* BridgingHeader.h */,
 				A1CF8D301AFE1325005EDE51 /* Info.plist */,
+				A1ED03481AFEBE6F00570757 /* WatchButton.entitlements */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				A1CF8D581AFE1332005EDE51 /* Info.plist */,
 				A1ED03461AFEB10B00570757 /* PaymentAlert.swift */,
 				A1CF8D781AFE297A005EDE51 /* SphereIOClient.swift */,
+				A1ED03491AFEBEA500570757 /* WatchButton WatchKit Extension.entitlements */,
 			);
 			path = "WatchKit Extension";
 			sourceTree = "<group>";
@@ -255,6 +259,7 @@
 				A1CF8D521AFE1332005EDE51 /* Frameworks */,
 				A1CF8D531AFE1332005EDE51 /* Resources */,
 				48FE6EBE800B75CE8DD3191C /* Copy Pods Resources */,
+				A15AB65A1AFEC3EE000DEA74 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -293,9 +298,21 @@
 				TargetAttributes = {
 					A1CF8D2B1AFE1325005EDE51 = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = RWJ5E97L7R;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					A1CF8D541AFE1332005EDE51 = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = RWJ5E97L7R;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					A1CF8D601AFE1332005EDE51 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -398,6 +415,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		A15AB65A1AFEC3EE000DEA74 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WatchButton WatchKit Extension/Pods-WatchButton WatchKit Extension-frameworks.sh\"";
 		};
 		A1AAA6AF1AFE9D51000D4227 /* Show TODOs and FIXMEs */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -604,9 +635,13 @@
 			baseConfigurationReference = 7C0CE39E3285DD0A6C6150DD /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Phone App/WatchButton.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Phone App/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Phone App/Supporting Files/BridgingHeader.h";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/Headers/Public/PayPal-iOS-SDK";
 			};
@@ -617,9 +652,13 @@
 			baseConfigurationReference = B55E260FC8FD7B66A309B885 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Phone App/WatchButton.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Phone App/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Phone App/Supporting Files/BridgingHeader.h";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/Headers/Public/PayPal-iOS-SDK";
 			};
@@ -661,6 +700,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 102C31ADD174089FFA887B93 /* Pods-WatchButton WatchKit Extension.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "WatchKit Extension/WatchButton WatchKit Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -668,6 +710,7 @@
 				INFOPLIST_FILE = "WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -676,9 +719,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9916CD088A8A3085B0CF7251 /* Pods-WatchButton WatchKit Extension.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "WatchKit Extension/WatchButton WatchKit Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

@@ -85,6 +85,7 @@ class ViewController: UIViewController, PayPalFuturePaymentDelegate {
                     if let amount = product.price["amount"], currency = product.price["currency"] {
                         client.createPayment(product.name, currency, amount) { (paymentId) in
                             storePaymentId(paymentId)
+                            storeRefreshToken(client.refreshToken!)
                             NSLog("Stored payment ID \(paymentId) in keychain.")
 
                             // Not that pretty, but allows us to skip a second OAuth flow

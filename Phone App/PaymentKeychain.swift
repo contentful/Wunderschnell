@@ -8,20 +8,31 @@
 
 import KeychainAccess
 
-let WBKeychainName      = "org.vu0.WatchButton.PayPal"
-let WBKeychainService   = "org.vu0.WatchButton"
+let WBKeychainId            = "org.vu0.WatchButton.PayPal.PaymentId"
+let WBKeychainRefreshToken  = "org.vu0.WatchButton.PayPal.RefreshToken"
+let WBKeychainService       = "org.vu0.WatchButton"
 
 // FIXME: Hard-coded shipping address due to time constraints :(
 func retrieveShippingAddress() -> Address {
     return Address(firstName: "YOLO Bert", lastName: "Thiefenthaler", streetName: "Ritterstr.", streetNumber: "23", postalCode: "10249", city: "Berlin", country: "DE")
 }
 
+func retrieveRefreshToken() -> String {
+    let keychain = Keychain(service: WBKeychainService)
+    return keychain[WBKeychainRefreshToken] ?? ""
+}
+
 func retrievePaymentId() -> String {
     let keychain = Keychain(service: WBKeychainService)
-    return keychain[WBKeychainName] ?? ""
+    return keychain[WBKeychainId] ?? ""
+}
+
+func storeRefreshToken(refreshToken: String) {
+    let keychain = Keychain(service: WBKeychainService)
+    keychain[WBKeychainRefreshToken] = refreshToken
 }
 
 func storePaymentId(paymentId: String) {
     let keychain = Keychain(service: WBKeychainService)
-    keychain[WBKeychainName] = paymentId
+    keychain[WBKeychainId] = paymentId
 }

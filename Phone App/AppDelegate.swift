@@ -7,6 +7,7 @@
 //
 
 import Keys
+import MMWormhole
 import UIKit
 
 // Change the used sphere.io project here
@@ -19,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var selectedProduct: [String:AnyObject]?
     var sphereClient: SphereIOClient!
     var window: UIWindow?
+    let wormhole = MMWormhole(applicationGroupIdentifier: AppGroupIdentifier, optionalDirectory: DirectoryIdentifier)
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         PayPalMobile.initializeWithClientIdsForEnvironments([ PayPalEnvironmentSandbox: WatchButtonKeys().payPalSandboxClientId()])
@@ -29,37 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!) {
         if let reply = reply, userInfo = userInfo, command = userInfo[CommandIdentifier] as? String {
-            switch(Command(rawValue: command)!) {
-            case .GetProduct:
-                fetchSelectedProduct() {
-                    if let product = self.selectedProduct {
-                        reply([Reply.Product.rawValue: product])
-                    }
-                    return
-                }
-                break
-            case .MakeOrder:
-                sphereClient.quickOrder(product: self.selectedProduct!, to: retrieveShippingAddress()) { (result) in
-                    if let order = result.value {
-                        if let client = self.client {
-                            let pp = Product(data: self.selectedProduct!)
-                            let amount = pp.price["amount"]!
-                            let currency = pp.price["currency"]!
-
-                            client.pay(retrievePaymentId(), currency, amount) { (paid) in
-                                reply([Reply.Paid.rawValue: paid])
-
-                                self.sphereClient.setPaymentState(paid ? .Paid : .Failed, forOrder: order) { (result) in
-                                    println("Payment state result: \(result)")
-                                }
-                            }
-                        } else {
-                            fatalError("Could not process payment request from watch")
-                        }
-                    }
-                }
-                break
-            }
+            handleCommand(command, reply)
         } else {
             fatalError("Invalid WatchKit extension request :(")
         }
@@ -83,6 +55,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 fatalError("Failed to retrieve products from Sphere.IO")
             }
+        }
+    }
+
+    func handleCommand(command: String, _ reply: (([NSObject : AnyObject]!) -> Void)) {
+        switch(Command(rawValue: command)!) {
+        case .GetProduct:
+            fetchSelectedProduct() {
+                if let product = self.selectedProduct {
+                    reply([Reply.Product.rawValue: product])
+                }
+                return
+            }
+            break
+        case .MakeOrder:
+            fetchSelectedProduct() {
+                self.sphereClient.quickOrder(product: self.selectedProduct!, to:retrieveShippingAddress()) { (result) in
+                    if let order = result.value {
+                        // TODO: Clean up handling of PayPalClients
+                        self.client = PayPalClient(clientId: self.keys.payPalSandboxClientId(), clientSecret: self.keys.payPalSandboxClientSecret(), futurePaymentCode: retrieveRefreshToken(), metadataId: "")
+
+                        if let client = self.client {
+                            let pp = Product(data: self.selectedProduct!)
+                            let amount = pp.price["amount"]!
+                            let currency = pp.price["currency"]!
+
+                            client.pay(retrievePaymentId(), currency, amount) { (paid) in
+                                reply([Reply.Paid.rawValue: paid])
+
+                                self.wormhole.passMessageObject(paid, identifier: Reply.Paid.rawValue)
+                                self.sphereClient.setPaymentState(paid ? .Paid : .Failed, forOrder: order) { (result) in
+                                    println("Payment state result: \(result)")
+                                }
+                            }
+                        } else {
+                            fatalError("Could not process payment request from watch")
+                        }
+                    }
+                }
+            }
+            break
         }
     }
 }

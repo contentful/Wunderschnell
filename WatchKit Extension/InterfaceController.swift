@@ -7,9 +7,12 @@
 //
 
 import Foundation
+import MMWormhole
 import WatchKit
 
 class InterfaceController: WKInterfaceController {
+    let wormhole = MMWormhole(applicationGroupIdentifier: AppGroupIdentifier, optionalDirectory: DirectoryIdentifier)
+
     @IBOutlet weak var productImage: WKInterfaceImage!
     @IBOutlet weak var productPrice: WKInterfaceLabel!
 
@@ -35,12 +38,16 @@ class InterfaceController: WKInterfaceController {
     }
 
     @IBAction func tapped() {
-        WKInterfaceController.openParentApplication([ CommandIdentifier: Command.MakeOrder.rawValue ]) { (data, error) in
-            if let data = data, paid = data[Reply.Paid.rawValue] as? Bool {
+        wormhole.listenForMessageWithIdentifier(Reply.Paid.rawValue) { (data) in
+            if let paid = data as? Bool {
                 self.presentControllerWithName("PaymentAlert", context: paid)
             } else {
                 self.presentControllerWithName("PaymentAlert", context: false)
             }
+        }
+
+        WKInterfaceController.openParentApplication([ CommandIdentifier: Command.MakeOrder.rawValue ]) { (_, _) in
+            // Seems like openParentApplication() has a too short timeout for our orders.
         }
     }
 }

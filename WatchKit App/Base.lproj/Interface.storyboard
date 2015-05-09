@@ -52,7 +52,7 @@
             <objects>
                 <controller identifier="PaymentAlert" id="Bu1-hc-WTn" customClass="PaymentAlert" customModule="WatchButton_WatchKit_Extension">
                     <items>
-                        <label width="1" height="1" alignment="left" text="Label" textAlignment="left" id="weO-oj-28T">
+                        <label width="1" height="1" alignment="left" text="Label" textAlignment="left" numberOfLines="0" id="weO-oj-28T">
                             <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                         </label>
                     </items>

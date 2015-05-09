@@ -12,14 +12,16 @@ import Alamofire
 private struct AuthRequest: URLRequestConvertible {
     private let clientId: String
     private let clientSecret: String
-    private let futurePaymentCode: String
+    private let code: String
+    private let grantAttributeName: String
+    private let grantType: String
 
     var URLRequest: NSURLRequest {
         if let URL = NSURL(string: "https://api.sandbox.paypal.com/v1/oauth2/token") {
             let URLRequest = NSMutableURLRequest(URL: URL)
             URLRequest.HTTPMethod = Method.POST.rawValue
 
-            let parameters = [ "grant_type": "authorization_code", "response_type": "token", "redirect_uri": "urn:ietf:wg:oauth:2.0:oob", "code": futurePaymentCode ]
+            let parameters = [ "grant_type": grantType, "response_type": "token", "redirect_uri": "urn:ietf:wg:oauth:2.0:oob", grantAttributeName: code ]
 
             let auth = String(format: "%@:%@", clientId, clientSecret).dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
             let header = auth.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
@@ -40,6 +42,7 @@ public class PayPalClient {
     let clientSecret: String
     let futurePaymentCode: String
     let metadataId: String
+    var refreshToken: String?
     var token: String?
 
     public init(clientId: String, clientSecret: String, futurePaymentCode: String, metadataId: String) {
@@ -79,34 +82,51 @@ public class PayPalClient {
         fatalError("Could not create valid request.")
     }
 
-    public func createPayment(description: String, _ currency: String, _ amount: String, completion: (paymentId: String) -> Void) {
-        Alamofire.request(AuthRequest(clientId: clientId, clientSecret: clientSecret, futurePaymentCode: futurePaymentCode))
-            .authenticate(user: clientId, password: clientSecret)
+    // TODO: Clean up handling of first token request vs. refresh
+    private func requestOAuthToken(completion: () -> ()) {
+        let grantAttributeName = metadataId == "" ? "refresh_token" : "code"
+        let grantType = metadataId == "" ? "refresh_token" : "authorization_code"
+
+        Alamofire.request(AuthRequest(clientId: clientId, clientSecret: clientSecret, code: futurePaymentCode, grantAttributeName: grantAttributeName, grantType: grantType))
             .responseJSON { (_, _, JSON, _) in
                 if let JSON = JSON as? [String:AnyObject] {
+                    if let refreshToken = JSON["refresh_token"] as? String {
+                        self.refreshToken = refreshToken
+                    }
+
                     if let token = JSON["access_token"] as? String {
                         self.token = token
-                        self.createActualPayment(description, currency, amount, completion)
+                        completion()
                     } else {
-                        NSLog("No `access_token` received: %@", JSON)
+                        fatalError("No `access_token` received: \(JSON)")
                     }
                 }
-            }
+        }
     }
 
+    public func createPayment(description: String, _ currency: String, _ amount: String, completion: (paymentId: String) -> Void) {
+        requestOAuthToken() {
+            self.createActualPayment(description, currency, amount, completion)
+        }
+    }
+
+    // grant_type=refresh_token&refresh_token=MFYQ...
+
     public func pay(paymentId: String, _ currency: String, _ amount: String, completion: (paid: Bool) -> Void) {
-        // FIXME: In the actual thing, we would need to refresh the OAuth token.
+        requestOAuthToken() {
+            let URL = "payments/authorization/\(paymentId)/capture"
+            let parameters: [String: AnyObject] = [ "amount": [ "currency": currency, "total": amount ], "is_final_capture": true]
 
-        let URL = "payments/authorization/\(paymentId)/capture"
-        let parameters: [String: AnyObject] = [ "amount": [ "currency": currency, "total": amount ], "is_final_capture": true]
+            Alamofire.request(self.payPalRequest(URL, .POST, parameters))
+                .responseJSON { (_, _, JSON, _) in
+                    println(JSON)
 
-        Alamofire.request(payPalRequest(URL, .POST, parameters))
-            .responseJSON { (_, _, JSON, _) in
-                if let JSON = JSON as? [String:AnyObject], amount = JSON["amount"] as? [String:AnyObject] {
-                    completion(paid: true)
-                } else {
-                    completion(paid: false)
-                }
+                    if let JSON = JSON as? [String:AnyObject], amount = JSON["amount"] as? [String:AnyObject] {
+                        completion(paid: true)
+                    } else {
+                        completion(paid: false)
+                    }
             }
+        }
     }
 }
