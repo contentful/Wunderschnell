@@ -102,7 +102,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             self.wormhole.passMessageObject(paid, identifier: Reply.Paid.rawValue)
                             self.sphereClient.setPaymentState(paid ? .Paid : .Failed, forOrder: order) { (result) in
                                 //println("Payment state result: \(result)")
-                                println("Order paid successfully.")
+
+                                if let order = result.value {
+                                    self.sphereClient.setState(.Complete, forOrder: order) { (result) in
+                                        println("Ordered successfully.")
+                                    }
+                                } else {
+                                    fatalError("Failed to set order to complete state.")
+                                }
                             }
                         }
                     }
