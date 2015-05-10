@@ -50,6 +50,7 @@ PODS:
   - ISO8601DateFormatter (0.7)
   - KeychainAccess (1.2.0)
   - Keys (1.0.0)
+  - MBProgressHUD (0.9.1)
   - MMWormhole (1.1.1):
     - MMWormhole/Core (= 1.1.1)
   - MMWormhole/Core (1.1.1)
@@ -75,6 +76,7 @@ DEPENDENCIES:
   - Form (HEAD)
   - KeychainAccess
   - Keys (from `Pods/CocoaPodsKeys/`)
+  - MBProgressHUD
   - MMWormhole
   - PayPal-iOS-SDK
   - Result
@@ -96,6 +98,7 @@ SPEC CHECKSUMS:
   ISO8601DateFormatter: ab926648eebe497f4d167c0fd083992f959f1274
   KeychainAccess: 6ff20bd4990b4840d8bde4e977f8c58e0fe7f3c1
   Keys: 253e4d01f8fe0a795e628b0040257c99f6ab7eab
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   MMWormhole: 941cd168b4afd6073f883b82944d6eded4e00203
   NSDictionary-ANDYSafeValue: c15ff39a6b1b82a52ea277c64520c7b574715afc
   NSDictionary-HYPNestedAttributes: 783d3adcf9f8e9a554004ee225f1bc0cdf0cfdfe

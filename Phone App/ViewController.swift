@@ -8,6 +8,7 @@
 
 import Alamofire
 import Keys
+import MBProgressHUD
 import UIKit
 
 class ViewController: UIViewController, PayPalFuturePaymentDelegate {
@@ -82,6 +83,9 @@ class ViewController: UIViewController, PayPalFuturePaymentDelegate {
     }
 
     func payPalFuturePaymentViewController(futurePaymentViewController: PayPalFuturePaymentViewController!, didAuthorizeFuturePayment futurePaymentAuthorization: [NSObject : AnyObject]!) {
+        dismissViewControllerAnimated(true, completion: nil)
+        MBProgressHUD.showHUDAddedTo(view, animated: true)
+
         if let futurePaymentAuthorization = futurePaymentAuthorization {
             let clientMetadataId = PayPalMobile.clientMetadataID()
 
@@ -97,12 +101,16 @@ class ViewController: UIViewController, PayPalFuturePaymentDelegate {
                             storePaymentId(paymentId)
                             storeRefreshToken(client.refreshToken!)
                             NSLog("Stored payment ID \(paymentId) in keychain.")
+
+                            MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                         }
+
+                        return
                     }
                 }
             }
         }
 
-        dismissViewControllerAnimated(true, completion: nil)
+        MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
     }
 }

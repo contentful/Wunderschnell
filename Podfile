@@ -16,6 +16,7 @@ pod 'Alamofire'
 pod 'ContentfulDeliveryAPI'
 pod 'Form', :head
 pod 'KeychainAccess'
+pod 'MBProgressHUD'
 pod 'MMWormhole'
 pod 'PayPal-iOS-SDK'
 pod 'Result'
