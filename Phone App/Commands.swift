@@ -15,9 +15,11 @@ public let DirectoryIdentifier = "WatchButton"
 public enum Command : String {
     case GetProduct = "GetProducts"
     case MakeOrder = "MakeOrder"
+    case Nothing = "Nothing"
 }
 
 public enum Reply : String {
+    case BeaconRanged = "BeaconRanged"
     case Paid = "Paid"
     case Product = "Product"
 }

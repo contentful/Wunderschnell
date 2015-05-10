@@ -7,22 +7,34 @@
 //
 
 import Foundation
+import MMWormhole
 import WatchKit
 
 class GlanceController: WKInterfaceController {
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
-        
-        // Configure interface objects here.
+    let wormhole = MMWormhole(applicationGroupIdentifier: AppGroupIdentifier, optionalDirectory: DirectoryIdentifier)
+
+    @IBOutlet weak var infoLabel: WKInterfaceLabel!
+
+    func resetLabel() {
+        infoLabel.setText("No beacons in range :(")
     }
 
     override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-    }
+        
+        resetLabel()
+        wormhole.listenForMessageWithIdentifier(Reply.BeaconRanged.rawValue) { (data) in
+            if let ranged = data as? Bool {
+                if ranged {
+                    self.infoLabel.setText("Beacon in range, tap to buy.")
+                }
+                return
+            }
 
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
+            self.resetLabel()
+        }
+
+        WKInterfaceController.openParentApplication([ CommandIdentifier: Command.Nothing.rawValue ]) { (_, _) in
+        }
     }
 }

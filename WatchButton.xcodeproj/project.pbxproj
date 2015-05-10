@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		15BF336A323A6BFEA166A568 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD8A85CEC34E4A816905356 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		67A173157CB327BFBC49A88E /* Pods_WatchButton_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E33E15F117981233A87312 /* Pods_WatchButton_WatchKit_Extension.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		A15AB65C1AFECD32000DEA74 /* BeaconController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15AB65B1AFECD32000DEA74 /* BeaconController.swift */; };
+		A15AB65E1AFECD8A000DEA74 /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15AB65D1AFECD8A000DEA74 /* Beacon.swift */; };
 		A1AAA6A91AFE8950000D4227 /* PayPalClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AAA6A71AFE86CD000D4227 /* PayPalClient.swift */; };
 		A1AAA6AB1AFE93A0000D4227 /* PaymentKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AAA6AA1AFE93A0000D4227 /* PaymentKeychain.swift */; };
 		A1AAA6AD1AFE97C4000D4227 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AAA6AC1AFE97C4000D4227 /* Commands.swift */; };
@@ -67,6 +69,8 @@
 		11E33E15F117981233A87312 /* Pods_WatchButton_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WatchButton_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C0CE39E3285DD0A6C6150DD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9916CD088A8A3085B0CF7251 /* Pods-WatchButton WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchButton WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-WatchButton WatchKit Extension/Pods-WatchButton WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
+		A15AB65B1AFECD32000DEA74 /* BeaconController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconController.swift; sourceTree = "<group>"; };
+		A15AB65D1AFECD8A000DEA74 /* Beacon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
 		A1AAA6A71AFE86CD000D4227 /* PayPalClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayPalClient.swift; sourceTree = "<group>"; };
 		A1AAA6AA1AFE93A0000D4227 /* PaymentKeychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentKeychain.swift; sourceTree = "<group>"; };
 		A1AAA6AC1AFE97C4000D4227 /* Commands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
@@ -169,6 +173,8 @@
 			isa = PBXGroup;
 			children = (
 				A1CF8D311AFE1325005EDE51 /* AppDelegate.swift */,
+				A15AB65D1AFECD8A000DEA74 /* Beacon.swift */,
+				A15AB65B1AFECD32000DEA74 /* BeaconController.swift */,
 				A1AAA6AC1AFE97C4000D4227 /* Commands.swift */,
 				A1AAA6AA1AFE93A0000D4227 /* PaymentKeychain.swift */,
 				A1AAA6A71AFE86CD000D4227 /* PayPalClient.swift */,
@@ -486,6 +492,8 @@
 				A1CF8D7A1AFE35A0005EDE51 /* SphereIOClient.swift in Sources */,
 				A1CF8D341AFE1325005EDE51 /* ViewController.swift in Sources */,
 				A1CF8D321AFE1325005EDE51 /* AppDelegate.swift in Sources */,
+				A15AB65E1AFECD8A000DEA74 /* Beacon.swift in Sources */,
+				A15AB65C1AFECD32000DEA74 /* BeaconController.swift in Sources */,
 				A1AAA6A91AFE8950000D4227 /* PayPalClient.swift in Sources */,
 				A1ED03441AFE9F7D00570757 /* Product.swift in Sources */,
 			);

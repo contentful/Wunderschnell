@@ -15,6 +15,7 @@ let SphereIOProject = "ecomhack-demo-67"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    private let beaconController = BeaconController()
     var client: PayPalClient?
     let keys = WatchButtonKeys()
     var selectedProduct: [String:AnyObject]?
@@ -26,6 +27,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PayPalMobile.initializeWithClientIdsForEnvironments([ PayPalEnvironmentSandbox: WatchButtonKeys().payPalSandboxClientId()])
 
         sphereClient = SphereIOClient(clientId: keys.sphereIOClientId(), clientSecret: keys.sphereIOClientSecret(), project: SphereIOProject)
+
+        beaconController.beaconCallback = { (beacon, _) in
+            self.wormhole.passMessageObject(true, identifier: Reply.BeaconRanged.rawValue)
+        }
+
+        beaconController.outOfRangeCallback = {
+            self.wormhole.passMessageObject(false, identifier: Reply.BeaconRanged.rawValue)
+        }
+
+        beaconController.refresh()
         return true
     }
 
@@ -94,6 +105,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                 }
             }
+            break
+        default:
             break
         }
     }

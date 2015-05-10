@@ -39,10 +39,23 @@
             <objects>
                 <glanceController spacing="0.0" id="Sv0-Ai-Zie" customClass="GlanceController" customModule="WatchButton_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <group alignment="left" id="gv7-I2-MZq"/>
-                        <group alignment="left" id="eew-Gs-W6Y"/>
+                        <group alignment="left" id="gv7-I2-MZq">
+                            <items>
+                                <label width="1" alignment="left" text="Wunderschnell" textAlignment="center" id="tTv-Ys-yEO"/>
+                            </items>
+                        </group>
+                        <group alignment="left" layout="vertical" id="eew-Gs-W6Y">
+                            <items>
+                                <label alignment="left" numberOfLines="0" id="96h-LO-DQs">
+                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                </label>
+                            </items>
+                        </group>
                     </items>
                     <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
+                    <connections>
+                        <outlet property="infoLabel" destination="96h-LO-DQs" id="Qk0-cQ-5m1"/>
+                    </connections>
                 </glanceController>
             </objects>
             <point key="canvasLocation" x="164" y="514"/>
