@@ -179,6 +179,7 @@
 				A1AAA6AA1AFE93A0000D4227 /* PaymentKeychain.swift */,
 				A1AAA6A71AFE86CD000D4227 /* PayPalClient.swift */,
 				A1ED03431AFE9F7D00570757 /* Product.swift */,
+				A1CF8D781AFE297A005EDE51 /* SphereIOClient.swift */,
 				A1CF8D331AFE1325005EDE51 /* ViewController.swift */,
 				A1CF8D771AFE1363005EDE51 /* Resources */,
 				A1CF8D2F1AFE1325005EDE51 /* Supporting Files */,
@@ -204,7 +205,6 @@
 				A1CF8D591AFE1332005EDE51 /* InterfaceController.swift */,
 				A1CF8D581AFE1332005EDE51 /* Info.plist */,
 				A1ED03461AFEB10B00570757 /* PaymentAlert.swift */,
-				A1CF8D781AFE297A005EDE51 /* SphereIOClient.swift */,
 				A1ED03491AFEBEA500570757 /* WatchButton WatchKit Extension.entitlements */,
 			);
 			path = "WatchKit Extension";
