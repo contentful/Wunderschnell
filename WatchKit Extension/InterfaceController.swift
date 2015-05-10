@@ -21,7 +21,7 @@ class InterfaceController: WKInterfaceController {
 
         WKInterfaceController.openParentApplication([ CommandIdentifier: Command.GetProduct.rawValue ]) { (data, error) in
             if let data = data, productData = data[Reply.Product.rawValue] as? [String:AnyObject] {
-                let product = Product(data: productData)
+                let product = Product(productData)
 
                 if let amount = product.price["amount"], currency = product.price["currency"] {
                     self.productPrice.setText("\(amount) \(currency)")

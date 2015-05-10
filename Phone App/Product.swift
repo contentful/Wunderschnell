@@ -9,14 +9,26 @@
 import Foundation
 
 // Little bit evil model object, because it tends to fatalError() :-)
-struct Product {
+public struct Product: Printable {
     private let LANG = "de"
     let data: [String:AnyObject]
 
-    var description: String { return translatedAttribute("description") }
-    var name: String { return translatedAttribute("name") }
+    public init(_ data: [String:AnyObject]) {
+        self.data = data
+    }
 
-    var imageUrl: String {
+    public var description: String {
+        if let amount = price["amount"], currency = price["currency"] {
+            return "\(name) \(amount) \(currency)"
+        }
+
+        fatalError("Product has no price.")
+    }
+
+    public var productDescription: String { return translatedAttribute("description") }
+    public var name: String { return translatedAttribute("name") }
+
+    public var imageUrl: String {
          if let images = variant["images"] as? [[String:AnyObject]], image = images.first, url = image["url"] as? String {
             return url
         }
@@ -24,7 +36,7 @@ struct Product {
         fatalError("Product has no image URL.")
     }
 
-    var price: [String:String] {
+    public var price: [String:String] {
         if let prices = variant["prices"] as? [[String:AnyObject]], price = prices.first, value = price["value"] as? [String:AnyObject], amount = value["centAmount"] as? Int, currency = value["currencyCode"] as? String {
             return [ "amount": String(format:"%.2f", Float(amount) / 100.0), "currency": currency ]
         }

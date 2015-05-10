@@ -25,9 +25,9 @@ class ViewController: UIViewController, PayPalFuturePaymentDelegate {
         if let delegate = UIApplication.sharedApplication().delegate as? AppDelegate {
             delegate.fetchSelectedProduct() {
                 if let productData = delegate.selectedProduct {
-                    let product = Product(data: productData)
+                    let product = Product(productData)
 
-                    self.descriptionLabel.text = product.description
+                    self.descriptionLabel.text = product.productDescription
                     self.nameLabel.text = product.name
 
                     if let amount = product.price["amount"], currency = product.price["currency"] {
@@ -90,7 +90,7 @@ class ViewController: UIViewController, PayPalFuturePaymentDelegate {
                 let client = PayPalClient(clientId: keys.payPalSandboxClientId(), clientSecret: keys.payPalSandboxClientSecret(), code: code, metadataId: clientMetadataId)
 
                 if let delegate = UIApplication.sharedApplication().delegate as? AppDelegate, productData = delegate.selectedProduct {
-                    let product = Product(data: productData)
+                    let product = Product(productData)
 
                     if let amount = product.price["amount"], currency = product.price["currency"] {
                         client.createPayment(product.name, currency, amount) { (paymentId) in

@@ -83,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             fetchSelectedProduct() {
                 self.sphereClient.quickOrder(product: self.selectedProduct!, to:retrieveShippingAddress()) { (result) in
                     if let order = result.value {
-                        let pp = Product(data: self.selectedProduct!)
+                        let pp = Product(self.selectedProduct!)
                         let amount = pp.price["amount"]!
                         let currency = pp.price["currency"]!
 
