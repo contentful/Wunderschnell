@@ -77,7 +77,7 @@ class ViewController: UIViewController, PayPalFuturePaymentDelegate {
 
             if let response = futurePaymentAuthorization["response"] as? [String:AnyObject], code = response["code"] as? String {
                 let keys = WatchButtonKeys()
-                let client = PayPalClient(clientId: keys.payPalSandboxClientId(), clientSecret: keys.payPalSandboxClientSecret(), futurePaymentCode: code, metadataId: clientMetadataId)
+                let client = PayPalClient(clientId: keys.payPalSandboxClientId(), clientSecret: keys.payPalSandboxClientSecret(), code: code, metadataId: clientMetadataId)
 
                 if let delegate = UIApplication.sharedApplication().delegate as? AppDelegate, productData = delegate.selectedProduct {
                     let product = Product(data: productData)
@@ -87,9 +87,6 @@ class ViewController: UIViewController, PayPalFuturePaymentDelegate {
                             storePaymentId(paymentId)
                             storeRefreshToken(client.refreshToken!)
                             NSLog("Stored payment ID \(paymentId) in keychain.")
-
-                            // Not that pretty, but allows us to skip a second OAuth flow
-                            delegate.client = client
                         }
                     }
                 }

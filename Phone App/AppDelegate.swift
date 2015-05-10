@@ -16,12 +16,12 @@ let SphereIOProject = "ecomhack-demo-67"
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     private let beaconController = BeaconController()
-    var client: PayPalClient?
-    let keys = WatchButtonKeys()
+    private let keys = WatchButtonKeys()
+    private var sphereClient: SphereIOClient!
+    private let wormhole = MMWormhole(applicationGroupIdentifier: AppGroupIdentifier, optionalDirectory: DirectoryIdentifier)
+
     var selectedProduct: [String:AnyObject]?
-    var sphereClient: SphereIOClient!
     var window: UIWindow?
-    let wormhole = MMWormhole(applicationGroupIdentifier: AppGroupIdentifier, optionalDirectory: DirectoryIdentifier)
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         PayPalMobile.initializeWithClientIdsForEnvironments([ PayPalEnvironmentSandbox: WatchButtonKeys().payPalSandboxClientId()])
@@ -69,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    func handleCommand(command: String, _ reply: (([NSObject : AnyObject]!) -> Void)) {
+    private func handleCommand(command: String, _ reply: (([NSObject : AnyObject]!) -> Void)) {
         switch(Command(rawValue: command)!) {
         case .GetProduct:
             fetchSelectedProduct() {
@@ -83,24 +83,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             fetchSelectedProduct() {
                 self.sphereClient.quickOrder(product: self.selectedProduct!, to:retrieveShippingAddress()) { (result) in
                     if let order = result.value {
-                        // TODO: Clean up handling of PayPalClients
-                        self.client = PayPalClient(clientId: self.keys.payPalSandboxClientId(), clientSecret: self.keys.payPalSandboxClientSecret(), futurePaymentCode: retrieveRefreshToken(), metadataId: "")
+                        let pp = Product(data: self.selectedProduct!)
+                        let amount = pp.price["amount"]!
+                        let currency = pp.price["currency"]!
 
-                        if let client = self.client {
-                            let pp = Product(data: self.selectedProduct!)
-                            let amount = pp.price["amount"]!
-                            let currency = pp.price["currency"]!
+                        let client = PayPalClient(clientId: self.keys.payPalSandboxClientId(), clientSecret: self.keys.payPalSandboxClientSecret(), code: retrieveRefreshToken())
 
-                            client.pay(retrievePaymentId(), currency, amount) { (paid) in
-                                reply([Reply.Paid.rawValue: paid])
+                        client.pay(retrievePaymentId(), currency, amount) { (paid) in
+                            reply([Reply.Paid.rawValue: paid])
 
-                                self.wormhole.passMessageObject(paid, identifier: Reply.Paid.rawValue)
-                                self.sphereClient.setPaymentState(paid ? .Paid : .Failed, forOrder: order) { (result) in
-                                    println("Payment state result: \(result)")
-                                }
+                            self.wormhole.passMessageObject(paid, identifier: Reply.Paid.rawValue)
+                            self.sphereClient.setPaymentState(paid ? .Paid : .Failed, forOrder: order) { (result) in
+                                println("Payment state result: \(result)")
                             }
-                        } else {
-                            fatalError("Could not process payment request from watch")
                         }
                     }
                 }

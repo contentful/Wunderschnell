@@ -35,20 +35,21 @@ private struct AuthRequest: URLRequestConvertible {
     }
 }
 
-// Implementation of https://github.com/paypal/PayPal-iOS-SDK/blob/master/docs/future_payments_server.md because we want no server. 😎
+/// Implementation of https://github.com/paypal/PayPal-iOS-SDK/blob/master/docs/future_payments_server.md because we want no server. 😎
 public class PayPalClient {
     let baseURL = "https://api.sandbox.paypal.com/v1"
     let clientId: String
     let clientSecret: String
-    let futurePaymentCode: String
+    let code: String
     let metadataId: String
     var refreshToken: String?
     var token: String?
 
-    public init(clientId: String, clientSecret: String, futurePaymentCode: String, metadataId: String) {
+    /// For inital OAuth, pass futurePaymentCode and metadataId. When refreshing, pass refreshToken.
+    public init(clientId: String, clientSecret: String, code: String, metadataId: String = "") {
         self.clientId = clientId
         self.clientSecret = clientSecret
-        self.futurePaymentCode = futurePaymentCode
+        self.code = code
         self.metadataId = metadataId
     }
 
@@ -82,12 +83,11 @@ public class PayPalClient {
         fatalError("Could not create valid request.")
     }
 
-    // TODO: Clean up handling of first token request vs. refresh
     private func requestOAuthToken(completion: () -> ()) {
         let grantAttributeName = metadataId == "" ? "refresh_token" : "code"
         let grantType = metadataId == "" ? "refresh_token" : "authorization_code"
 
-        Alamofire.request(AuthRequest(clientId: clientId, clientSecret: clientSecret, code: futurePaymentCode, grantAttributeName: grantAttributeName, grantType: grantType))
+        Alamofire.request(AuthRequest(clientId: clientId, clientSecret: clientSecret, code: code, grantAttributeName: grantAttributeName, grantType: grantType))
             .responseJSON { (_, _, JSON, _) in
                 if let JSON = JSON as? [String:AnyObject] {
                     if let refreshToken = JSON["refresh_token"] as? String {
@@ -109,8 +109,6 @@ public class PayPalClient {
             self.createActualPayment(description, currency, amount, completion)
         }
     }
-
-    // grant_type=refresh_token&refresh_token=MFYQ...
 
     public func pay(paymentId: String, _ currency: String, _ amount: String, completion: (paid: Bool) -> Void) {
         requestOAuthToken() {
