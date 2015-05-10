@@ -14,6 +14,7 @@ link_with 'WatchButton'
 
 pod 'Alamofire'
 pod 'ContentfulDeliveryAPI'
+pod 'Form', :head
 pod 'KeychainAccess'
 pod 'MMWormhole'
 pod 'PayPal-iOS-SDK'

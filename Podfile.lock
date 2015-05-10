@@ -24,18 +24,55 @@ PODS:
   - ContentfulDeliveryAPI (1.7.3):
     - AFNetworking (>= 2.5.3)
     - ISO8601DateFormatter
+  - Form (HEAD based on 3.4.0):
+    - Hex (~> 1.1.1)
+    - HYPImagePicker (~> 0.3)
+    - HYPMathParser (~> 0.4.0)
+    - HYPNorwegianAccountNumber (~> 1.2.1)
+    - HYPNorwegianSSN (~> 1.10)
+    - ISO8601DateFormatter (~> 0.7)
+    - NSDictionary-ANDYSafeValue (~> 0.3)
+    - NSDictionary-HYPNestedAttributes (~> 0.4.1)
+    - NSJSONSerialization-ANDYJSONFile (~> 1.1)
+    - NSObject-HYPTesting (~> 1.2)
+    - NSString-HYPContainsString (~> 0.1)
+    - NSString-HYPFormula (~> 1.6.1)
+    - NSString-HYPRelationshipParser (~> 0.4.1)
+    - NSString-HYPWordExtractor (~> 1.1)
+    - NSString-ZENInflections (~> 1.2)
+    - UIButton-ANDYHighlighted (~> 0.2.1)
+    - UIViewController-HYPKeyboardToolbar (~> 0.1)
+  - Hex (1.1.1)
+  - HYPImagePicker (0.3)
+  - HYPMathParser (0.4.0)
+  - HYPNorwegianAccountNumber (1.2.1)
+  - HYPNorwegianSSN (1.10.1)
   - ISO8601DateFormatter (0.7)
   - KeychainAccess (1.2.0)
   - Keys (1.0.0)
   - MMWormhole (1.1.1):
     - MMWormhole/Core (= 1.1.1)
   - MMWormhole/Core (1.1.1)
+  - NSDictionary-ANDYSafeValue (0.3)
+  - NSDictionary-HYPNestedAttributes (0.4.1):
+    - NSString-HYPRelationshipParser (~> 0.4.1)
+  - NSJSONSerialization-ANDYJSONFile (1.1)
+  - NSObject-HYPTesting (1.2)
+  - NSString-HYPContainsString (0.1)
+  - NSString-HYPFormula (1.6.1):
+    - NSString-HYPWordExtractor
+  - NSString-HYPRelationshipParser (0.4.1)
+  - NSString-HYPWordExtractor (1.2)
+  - NSString-ZENInflections (1.2)
   - PayPal-iOS-SDK (2.10.1)
   - Result (0.3.2)
+  - UIButton-ANDYHighlighted (0.2.1)
+  - UIViewController-HYPKeyboardToolbar (0.1)
 
 DEPENDENCIES:
   - Alamofire
   - ContentfulDeliveryAPI
+  - Form (HEAD)
   - KeychainAccess
   - Keys (from `Pods/CocoaPodsKeys/`)
   - MMWormhole
@@ -50,11 +87,28 @@ SPEC CHECKSUMS:
   AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
   Alamofire: 1acfdf179aff68b41a48dff70c1ac7fa263e2bcb
   ContentfulDeliveryAPI: 7c50f9ff2ef361ff1622bee630ed9aaac5f24a2d
+  Form: 95b18c872ca40ecdadbde38ebded2cd41c50b520
+  Hex: acf6d0dc34658d3d44047a992bfd09190c87e6e7
+  HYPImagePicker: 5c6e463ec15ae6b647355eb11f3f310342616fbf
+  HYPMathParser: 234475b2d424fc9cc5a17bd2fef7b73e1c03dfd3
+  HYPNorwegianAccountNumber: b0062d7419d217123dff0ef04f1931ed5f1e3bbf
+  HYPNorwegianSSN: 75e8b512f5a7be80dad61c3ba26494a5459a5b7a
   ISO8601DateFormatter: ab926648eebe497f4d167c0fd083992f959f1274
   KeychainAccess: 6ff20bd4990b4840d8bde4e977f8c58e0fe7f3c1
   Keys: 253e4d01f8fe0a795e628b0040257c99f6ab7eab
   MMWormhole: 941cd168b4afd6073f883b82944d6eded4e00203
+  NSDictionary-ANDYSafeValue: c15ff39a6b1b82a52ea277c64520c7b574715afc
+  NSDictionary-HYPNestedAttributes: 783d3adcf9f8e9a554004ee225f1bc0cdf0cfdfe
+  NSJSONSerialization-ANDYJSONFile: 4a92ca174d5ccde13015e853e9eb62440459b478
+  NSObject-HYPTesting: fadde70c75061b731b313c390e20777aed0a914d
+  NSString-HYPContainsString: a8147bbb90b9aca02f69d12546b4d2938a5d01dc
+  NSString-HYPFormula: 0d0ecc4725efdcfc74e079364aa5c2014c18f9ec
+  NSString-HYPRelationshipParser: 7fa231131e408f26b3b72a41157aa6620a195b4d
+  NSString-HYPWordExtractor: 7484da8d2d23e41b24b0bdb218293ab349f9f650
+  NSString-ZENInflections: 35ae6d02981b1def07bd6dc8e6455e827453bc29
   PayPal-iOS-SDK: b7143e1e3ce51a82833c50bdac696a7a40852684
   Result: 81c3da19af8fbc2ecfb21edce137dc5b23b3659b
+  UIButton-ANDYHighlighted: 3f5e9fb68fb3425bd9fddc030af452d3ac9d1613
+  UIViewController-HYPKeyboardToolbar: d5cb85447caeaf9e0e7ed575ce3b1576c7d53dd8
 
 COCOAPODS: 0.37.1

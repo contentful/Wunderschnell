@@ -66,7 +66,12 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="WUNDERSCHNELL" id="yke-js-wZW">
-                        <barButtonItem key="rightBarButtonItem" title="Set up Payment" id="DXo-Vo-GBa">
+                        <barButtonItem key="leftBarButtonItem" title="Address" id="GaV-je-MPb">
+                            <connections>
+                                <action selector="setUpAddressTapped:" destination="vXZ-lx-hvc" id="mc7-5o-lCw"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Payment" id="DXo-Vo-GBa">
                             <connections>
                                 <action selector="setUpPaymentTapped:" destination="vXZ-lx-hvc" id="j8f-SL-rPg"/>
                             </connections>

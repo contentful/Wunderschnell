@@ -52,6 +52,17 @@ class ViewController: UIViewController, PayPalFuturePaymentDelegate {
     }
 
     // MARK: - Actions
+    @IBAction private func dismissForm() {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    @IBAction func setUpAddressTapped(sender: UIBarButtonItem) {
+        let vc = AddressFormViewController()
+        vc.navigationItem.title = "Personal"
+        vc.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "dismissForm")
+        
+        presentViewController(UINavigationController(rootViewController: vc), animated: true) { }
+    }
 
     @IBAction func setUpPaymentTapped(sender: UIBarButtonItem) {
         payPalConfiguration = PayPalConfiguration()
@@ -67,7 +78,7 @@ class ViewController: UIViewController, PayPalFuturePaymentDelegate {
     // MARK: - PayPalFuturePaymentDelegate
 
     func payPalFuturePaymentDidCancel(futurePaymentViewController: PayPalFuturePaymentViewController!) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
     func payPalFuturePaymentViewController(futurePaymentViewController: PayPalFuturePaymentViewController!, didAuthorizeFuturePayment futurePaymentAuthorization: [NSObject : AnyObject]!) {
@@ -92,6 +103,6 @@ class ViewController: UIViewController, PayPalFuturePaymentDelegate {
             }
         }
 
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }
