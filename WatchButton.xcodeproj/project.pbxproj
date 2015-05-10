@@ -202,8 +202,8 @@
 			children = (
 				A1CF8D5B1AFE1332005EDE51 /* GlanceController.swift */,
 				A1CF8D5D1AFE1332005EDE51 /* Images.xcassets */,
-				A1CF8D591AFE1332005EDE51 /* InterfaceController.swift */,
 				A1CF8D581AFE1332005EDE51 /* Info.plist */,
+				A1CF8D591AFE1332005EDE51 /* InterfaceController.swift */,
 				A1ED03461AFEB10B00570757 /* PaymentAlert.swift */,
 				A1ED03491AFEBEA500570757 /* WatchButton WatchKit Extension.entitlements */,
 			);
@@ -214,8 +214,8 @@
 			isa = PBXGroup;
 			children = (
 				A1CF8D6B1AFE1332005EDE51 /* Images.xcassets */,
-				A1CF8D681AFE1332005EDE51 /* Interface.storyboard */,
 				A1CF8D671AFE1332005EDE51 /* Info.plist */,
+				A1CF8D681AFE1332005EDE51 /* Interface.storyboard */,
 			);
 			path = "WatchKit App";
 			sourceTree = "<group>";
