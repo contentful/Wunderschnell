@@ -10,6 +10,14 @@ code is not needed.
 
 Note: Project built at [ecomhack 2015][1], so the code is a little bit horrible.
 
+## Building
+
+```bash
+$ make pod
+$ make all
+```
+
 [1]: http://www.ecomhack.io
 [2]: https://www.amazon.com/oc/dash-button
 [3]: http://www.commercetools.com/de/
+
