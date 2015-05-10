@@ -28,6 +28,14 @@ public struct Product: Printable {
     public var productDescription: String { return translatedAttribute("description") }
     public var name: String { return translatedAttribute("name") }
 
+    public var identifier: String {
+        if let id = data["id"] as? String {
+            return id
+        }
+
+        fatalError("Product has no identifier.")
+    }
+
     public var imageUrl: String {
          if let images = variant["images"] as? [[String:AnyObject]], image = images.first, url = image["url"] as? String {
             return url
