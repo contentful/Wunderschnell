@@ -31,8 +31,7 @@ class ViewController: UIViewController, PayPalFuturePaymentDelegate {
                     self.nameLabel.text = product.name
 
                     if let amount = product.price["amount"], currency = product.price["currency"] {
-                        let actualAmount = Float(amount.toInt()!) / 100.0
-                        self.priceLabel.text = "\(actualAmount) \(currency)"
+                        self.priceLabel.text = "\(amount) \(currency)"
                     }
 
                     Alamofire.request(.GET, product.imageUrl).response() { (_, _, data, error) in

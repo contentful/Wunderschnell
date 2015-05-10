@@ -26,7 +26,7 @@ struct Product {
 
     var price: [String:String] {
         if let prices = variant["prices"] as? [[String:AnyObject]], price = prices.first, value = price["value"] as? [String:AnyObject], amount = value["centAmount"] as? Int, currency = value["currencyCode"] as? String {
-            return [ "amount": String(amount), "currency": currency ]
+            return [ "amount": String(format:"%.2f", Float(amount) / 100.0), "currency": currency ]
         }
 
         fatalError("Product has no price.")

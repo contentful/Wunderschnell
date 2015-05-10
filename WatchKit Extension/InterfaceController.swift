@@ -24,8 +24,7 @@ class InterfaceController: WKInterfaceController {
                 let product = Product(data: productData)
 
                 if let amount = product.price["amount"], currency = product.price["currency"] {
-                    let actualAmount = Float(amount.toInt()!) / 100.0
-                    self.productPrice.setText("\(actualAmount) \(currency)")
+                    self.productPrice.setText("\(amount) \(currency)")
                 }
 
                 NSURLConnection.sendAsynchronousRequest(NSURLRequest(URL: NSURL(string: product.imageUrl)!), queue: NSOperationQueue.mainQueue()) { (_, data, _) in
