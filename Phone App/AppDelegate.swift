@@ -13,6 +13,13 @@ import UIKit
 // Change the used sphere.io project here
 let SphereIOProject = "ecomhack-demo-67"
 
+private extension Array {
+    func randomItem() -> T {
+        let index = Int(arc4random_uniform(UInt32(self.count)))
+        return self[index]
+    }
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     private let beaconController = BeaconController()
@@ -60,8 +67,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         sphereClient.fetchProductData() { (result) in
-            if let value = result.value, results = value["results"] as? [[String:AnyObject]], product = results.first {
-                self.selectedProduct = product
+            if let value = result.value, results = value["results"] as? [[String:AnyObject]] {
+                self.selectedProduct = results.randomItem()
                 completion()
             } else {
                 fatalError("Failed to retrieve products from Sphere.IO")

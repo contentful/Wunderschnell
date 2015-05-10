@@ -65,6 +65,7 @@ public struct Product: Printable {
             return value
         }
 
-        fatalError("Product has no \(name).")
+        return "n/a"
+        //fatalError("Product has no \(name).")
     }
 }
