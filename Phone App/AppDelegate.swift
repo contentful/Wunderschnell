@@ -101,7 +101,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
                             self.wormhole.passMessageObject(paid, identifier: Reply.Paid.rawValue)
                             self.sphereClient.setPaymentState(paid ? .Paid : .Failed, forOrder: order) { (result) in
-                                println("Payment state result: \(result)")
+                                //println("Payment state result: \(result)")
+                                println("Order paid successfully.")
                             }
                         }
                     }

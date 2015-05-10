@@ -61,7 +61,7 @@ public class PayPalClient {
                 if let JSON = JSON as? [String:AnyObject], transactions = JSON["transactions"] as? [[String:AnyObject]], relatedResources = transactions.first?["related_resources"] as? [[String:AnyObject]], authorization = relatedResources.first?["authorization"] as? [String:AnyObject], id = authorization["id"] as? String {
                     completion(paymentId: id)
                 } else {
-                    NSLog("Did not receive ID for payment")
+                    fatalError("Did not receive ID for payment")
                 }
             }
     }
@@ -117,7 +117,7 @@ public class PayPalClient {
 
             Alamofire.request(self.payPalRequest(URL, .POST, parameters))
                 .responseJSON { (_, _, JSON, _) in
-                    println(JSON)
+                    //println(JSON)
 
                     if let JSON = JSON as? [String:AnyObject], amount = JSON["amount"] as? [String:AnyObject] {
                         completion(paid: true)
