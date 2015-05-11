@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="7701"/>
     </dependencies>
     <scenes>
-        <!--Wunderschnell-->
+        <!--ÜberSchnell-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller title="Wunderschnell" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchButton_WatchKit_App" customModuleProvider="target">
+                <controller title="ÜberSchnell" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchButton_WatchKit_App" customModuleProvider="target">
                     <items>
                         <group width="1" height="1" alignment="left" layout="vertical" id="ha1-Xb-KXP">
                             <items>
@@ -41,7 +41,7 @@
                     <items>
                         <group alignment="left" id="gv7-I2-MZq">
                             <items>
-                                <label width="1" alignment="left" text="Wunderschnell" textAlignment="center" id="tTv-Ys-yEO"/>
+                                <label width="1" alignment="left" text="ÜberSchnell" textAlignment="center" id="tTv-Ys-yEO"/>
                             </items>
                         </group>
                         <group alignment="left" layout="vertical" id="eew-Gs-W6Y">

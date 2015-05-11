@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--WUNDERSCHNELL-->
+        <!--ÜberSchnell-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="WatchButton" customModuleProvider="target" sceneMemberID="viewController">
@@ -65,7 +65,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="WUNDERSCHNELL" id="yke-js-wZW">
+                    <navigationItem key="navigationItem" title="ÜberSchnell" id="yke-js-wZW">
                         <barButtonItem key="leftBarButtonItem" title="Address" id="GaV-je-MPb">
                             <connections>
                                 <action selector="setUpAddressTapped:" destination="vXZ-lx-hvc" id="mc7-5o-lCw"/>
