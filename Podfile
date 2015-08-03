@@ -13,7 +13,7 @@ use_frameworks!
 link_with 'WatchButton'
 
 pod 'Alamofire'
-pod 'ContentfulDeliveryAPI'
+#pod 'ContentfulDeliveryAPI', :path => '../contentful-delivery-api'
 pod 'Cube', :path => '../Cube'
 pod 'Form', :head
 pod 'KeychainAccess'

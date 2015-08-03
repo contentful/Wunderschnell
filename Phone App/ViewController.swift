@@ -91,7 +91,7 @@ class ViewController: UIViewController, PayPalFuturePaymentDelegate {
             let clientMetadataId = PayPalMobile.clientMetadataID()
 
             if let response = futurePaymentAuthorization["response"] as? [String:AnyObject], code = response["code"] as? String {
-                let keys = WatchButtonKeys()
+                let keys = WatchbuttonKeys()
                 let client = PayPalClient(clientId: keys.payPalSandboxClientId(), clientSecret: keys.payPalSandboxClientSecret(), code: code, metadataId: clientMetadataId)
 
                 if let delegate = UIApplication.sharedApplication().delegate as? AppDelegate, productData = delegate.selectedProduct {

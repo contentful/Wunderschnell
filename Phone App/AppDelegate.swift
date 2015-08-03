@@ -24,7 +24,7 @@ private extension Array {
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     private let beaconController = BeaconController()
-    private let keys = WatchButtonKeys()
+    private let keys = WatchbuttonKeys()
     private var sphereClient: SphereIOClient!
     private let wormhole = MMWormhole(applicationGroupIdentifier: AppGroupIdentifier, optionalDirectory: DirectoryIdentifier)
 
@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        PayPalMobile.initializeWithClientIdsForEnvironments([ PayPalEnvironmentSandbox: WatchButtonKeys().payPalSandboxClientId()])
+        PayPalMobile.initializeWithClientIdsForEnvironments([ PayPalEnvironmentSandbox: WatchbuttonKeys().payPalSandboxClientId()])
 
         sphereClient = SphereIOClient(clientId: keys.sphereIOClientId(), clientSecret: keys.sphereIOClientSecret(), project: SphereIOProject)
 

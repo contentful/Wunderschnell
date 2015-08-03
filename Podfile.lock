@@ -1,29 +1,8 @@
 PODS:
-  - AFNetworking (2.5.3):
-    - AFNetworking/NSURLConnection (= 2.5.3)
-    - AFNetworking/NSURLSession (= 2.5.3)
-    - AFNetworking/Reachability (= 2.5.3)
-    - AFNetworking/Security (= 2.5.3)
-    - AFNetworking/Serialization (= 2.5.3)
-    - AFNetworking/UIKit (= 2.5.3)
-  - AFNetworking/NSURLConnection (2.5.3):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.5.3):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.5.3)
-  - AFNetworking/Security (2.5.3)
-  - AFNetworking/Serialization (2.5.3)
-  - AFNetworking/UIKit (2.5.3):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
   - Alamofire (1.2.1)
-  - ContentfulDeliveryAPI (1.7.3):
-    - AFNetworking (>= 2.5.3)
-    - ISO8601DateFormatter
+  - Cube (0.0.1):
+    - Alamofire
+    - Result
   - Form (HEAD based on 3.4.0):
     - Hex (~> 1.1.1)
     - HYPImagePicker (~> 0.3)
@@ -72,23 +51,24 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
-  - ContentfulDeliveryAPI
+  - Cube (from `../Cube`)
   - Form (HEAD)
   - KeychainAccess
-  - Keys (from `Pods/CocoaPodsKeys/`)
+  - Keys (from `Pods/CocoaPodsKeys`)
   - MBProgressHUD
   - MMWormhole
   - PayPal-iOS-SDK
   - Result
 
 EXTERNAL SOURCES:
+  Cube:
+    :path: ../Cube
   Keys:
-    :path: Pods/CocoaPodsKeys/
+    :path: Pods/CocoaPodsKeys
 
 SPEC CHECKSUMS:
-  AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
   Alamofire: 1acfdf179aff68b41a48dff70c1ac7fa263e2bcb
-  ContentfulDeliveryAPI: 7c50f9ff2ef361ff1622bee630ed9aaac5f24a2d
+  Cube: bde932fbccdcea828246f70b88ce4b743005bf12
   Form: 95b18c872ca40ecdadbde38ebded2cd41c50b520
   Hex: acf6d0dc34658d3d44047a992bfd09190c87e6e7
   HYPImagePicker: 5c6e463ec15ae6b647355eb11f3f310342616fbf
@@ -97,7 +77,7 @@ SPEC CHECKSUMS:
   HYPNorwegianSSN: 75e8b512f5a7be80dad61c3ba26494a5459a5b7a
   ISO8601DateFormatter: ab926648eebe497f4d167c0fd083992f959f1274
   KeychainAccess: 6ff20bd4990b4840d8bde4e977f8c58e0fe7f3c1
-  Keys: 253e4d01f8fe0a795e628b0040257c99f6ab7eab
+  Keys: 7d2ff6ff42f6903358267ce56e9392f83c31acfe
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   MMWormhole: 941cd168b4afd6073f883b82944d6eded4e00203
   NSDictionary-ANDYSafeValue: c15ff39a6b1b82a52ea277c64520c7b574715afc
@@ -114,4 +94,4 @@ SPEC CHECKSUMS:
   UIButton-ANDYHighlighted: 3f5e9fb68fb3425bd9fddc030af452d3ac9d1613
   UIViewController-HYPKeyboardToolbar: d5cb85447caeaf9e0e7ed575ce3b1576c7d53dd8
 
-COCOAPODS: 0.37.1
+COCOAPODS: 0.38.2
