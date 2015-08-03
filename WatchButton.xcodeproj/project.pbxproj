@@ -28,9 +28,6 @@
 		A1CF8D6A1AFE1332005EDE51 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1CF8D681AFE1332005EDE51 /* Interface.storyboard */; };
 		A1CF8D6C1AFE1332005EDE51 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1CF8D6B1AFE1332005EDE51 /* Images.xcassets */; };
 		A1CF8D6F1AFE1332005EDE51 /* WatchButton WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A1CF8D551AFE1332005EDE51 /* WatchButton WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		A1CF8D7A1AFE35A0005EDE51 /* SphereIOClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF8D781AFE297A005EDE51 /* SphereIOClient.swift */; };
-		A1ED03441AFE9F7D00570757 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ED03431AFE9F7D00570757 /* Product.swift */; };
-		A1ED03451AFEAD1100570757 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ED03431AFE9F7D00570757 /* Product.swift */; };
 		A1ED03471AFEB10B00570757 /* PaymentAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ED03461AFEB10B00570757 /* PaymentAlert.swift */; };
 /* End PBXBuildFile section */
 
@@ -92,9 +89,7 @@
 		A1CF8D671AFE1332005EDE51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1CF8D691AFE1332005EDE51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		A1CF8D6B1AFE1332005EDE51 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		A1CF8D781AFE297A005EDE51 /* SphereIOClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SphereIOClient.swift; sourceTree = "<group>"; };
 		A1E9A40C1AFE742D00C28085 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
-		A1ED03431AFE9F7D00570757 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		A1ED03461AFEB10B00570757 /* PaymentAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentAlert.swift; sourceTree = "<group>"; };
 		A1ED03481AFEBE6F00570757 /* WatchButton.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = WatchButton.entitlements; path = ../WatchButton.entitlements; sourceTree = "<group>"; };
 		A1ED03491AFEBEA500570757 /* WatchButton WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "WatchButton WatchKit Extension.entitlements"; sourceTree = "<group>"; };
@@ -181,8 +176,6 @@
 				A1AAA6AC1AFE97C4000D4227 /* Commands.swift */,
 				A1AAA6AA1AFE93A0000D4227 /* PaymentKeychain.swift */,
 				A1AAA6A71AFE86CD000D4227 /* PayPalClient.swift */,
-				A1ED03431AFE9F7D00570757 /* Product.swift */,
-				A1CF8D781AFE297A005EDE51 /* SphereIOClient.swift */,
 				A1CF8D331AFE1325005EDE51 /* ViewController.swift */,
 				A1CF8D771AFE1363005EDE51 /* Resources */,
 				A1CF8D2F1AFE1325005EDE51 /* Supporting Files */,
@@ -492,14 +485,12 @@
 			files = (
 				A1AAA6AB1AFE93A0000D4227 /* PaymentKeychain.swift in Sources */,
 				A1AAA6AD1AFE97C4000D4227 /* Commands.swift in Sources */,
-				A1CF8D7A1AFE35A0005EDE51 /* SphereIOClient.swift in Sources */,
 				A19B89B31AFEEC6C00E15887 /* AddressFormViewController.swift in Sources */,
 				A1CF8D341AFE1325005EDE51 /* ViewController.swift in Sources */,
 				A1CF8D321AFE1325005EDE51 /* AppDelegate.swift in Sources */,
 				A15AB65E1AFECD8A000DEA74 /* Beacon.swift in Sources */,
 				A15AB65C1AFECD32000DEA74 /* BeaconController.swift in Sources */,
 				A1AAA6A91AFE8950000D4227 /* PayPalClient.swift in Sources */,
-				A1ED03441AFE9F7D00570757 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,7 +502,6 @@
 				A1CF8D5C1AFE1332005EDE51 /* GlanceController.swift in Sources */,
 				A1ED03471AFEB10B00570757 /* PaymentAlert.swift in Sources */,
 				A1AAA6AE1AFE97C4000D4227 /* Commands.swift in Sources */,
-				A1ED03451AFEAD1100570757 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

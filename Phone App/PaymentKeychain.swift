@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Boris Bügling. All rights reserved.
 //
 
+import Cube
 import KeychainAccess
 
 let WBKeychainId            = "org.vu0.WatchButton.PayPal.PaymentId"

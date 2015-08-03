@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Boris Bügling. All rights reserved.
 //
 
+import Cube
 import Foundation
 import MMWormhole
 import WatchKit

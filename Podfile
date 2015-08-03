@@ -14,6 +14,7 @@ link_with 'WatchButton'
 
 pod 'Alamofire'
 pod 'ContentfulDeliveryAPI'
+pod 'Cube', :path => '../Cube'
 pod 'Form', :head
 pod 'KeychainAccess'
 pod 'MBProgressHUD'
