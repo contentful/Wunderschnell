@@ -15,7 +15,7 @@ use_frameworks!
 
 def shared_pods
 
-pod 'Cube', :path => '../Cube'
+pod 'Cube', :git => 'https://github.com/contentful-labs/Cube.git', :branch => 'swift-2.0'
 pod 'MMWormhole'
 
 end

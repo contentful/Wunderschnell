@@ -51,7 +51,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (from `https://github.com/neonichu/Alamofire.git`, branch `swift-2.0`)
-  - Cube (from `../Cube`)
+  - Cube (from `https://github.com/contentful-labs/Cube.git`, branch `swift-2.0`)
   - Form (HEAD)
   - KeychainAccess (from `https://github.com/kishikawakatsumi/KeychainAccess.git`,
     branch `swift-2.0`)
@@ -66,7 +66,8 @@ EXTERNAL SOURCES:
     :branch: swift-2.0
     :git: https://github.com/neonichu/Alamofire.git
   Cube:
-    :path: ../Cube
+    :branch: swift-2.0
+    :git: https://github.com/contentful-labs/Cube.git
   KeychainAccess:
     :branch: swift-2.0
     :git: https://github.com/kishikawakatsumi/KeychainAccess.git
@@ -77,6 +78,9 @@ CHECKOUT OPTIONS:
   Alamofire:
     :commit: 77900e2236db0c4df5781d6bd0a9cdbeff137ed2
     :git: https://github.com/neonichu/Alamofire.git
+  Cube:
+    :commit: bd11819e06540ad1c231ba89ae0431bdcc46cc84
+    :git: https://github.com/contentful-labs/Cube.git
   KeychainAccess:
     :commit: 7879a49b81c553ad9b40cbafda34a881648e2ff3
     :git: https://github.com/kishikawakatsumi/KeychainAccess.git
