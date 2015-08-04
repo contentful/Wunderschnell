@@ -37,7 +37,7 @@ class ViewController: UIViewController, PayPalFuturePaymentDelegate {
                     }
 
                     Alamofire.request(.GET, product.imageUrl).response() { (_, _, data, error) in
-                        if let data = data as? NSData {
+                        if let data = data {
                             self.productImageView.image = UIImage(data: data)
                         }
                     }

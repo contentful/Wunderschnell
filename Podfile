@@ -1,3 +1,6 @@
+source 'https://github.com/contentful/CocoaPodsSpecs'
+source 'https://github.com/CocoaPods/Specs'
+
 plugin 'cocoapods-keys', {
   :project => 'WatchButton',
   :keys => [
@@ -10,20 +13,29 @@ plugin 'cocoapods-keys', {
 inhibit_all_warnings!
 use_frameworks!
 
+def shared_pods
+
+pod 'Cube', :path => '../Cube'
+pod 'MMWormhole'
+
+end
+
 link_with 'WatchButton'
 
-pod 'Alamofire'
+shared_pods
+
+pod 'Alamofire', :git => 'https://github.com/neonichu/Alamofire.git', :branch => 'swift-2.0'
 #pod 'ContentfulDeliveryAPI', :path => '../contentful-delivery-api'
-pod 'Cube', :path => '../Cube'
 pod 'Form', :head
-pod 'KeychainAccess'
+pod 'KeychainAccess', :git => 'https://github.com/kishikawakatsumi/KeychainAccess.git', :branch => 'swift-2.0'
 pod 'MBProgressHUD'
-pod 'MMWormhole'
 pod 'PayPal-iOS-SDK'
-pod 'Result'
+pod 'Result', '>= 0.6-beta.1'
 
 target 'WatchButton WatchKit Extension', :exclusive => true do
 
-pod 'MMWormhole'
+platform :watchos, '2.0'
+
+shared_pods
 
 end

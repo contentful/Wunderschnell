@@ -8,6 +8,7 @@
 
 import Foundation
 import MMWormhole
+import WatchConnectivity
 import WatchKit
 
 class GlanceController: WKInterfaceController {
@@ -34,7 +35,7 @@ class GlanceController: WKInterfaceController {
             self.resetLabel()
         }
 
-        WKInterfaceController.openParentApplication([ CommandIdentifier: Command.Nothing.rawValue ]) { (_, _) in
-        }
+        WCSession.defaultSession().sendMessage([ CommandIdentifier: Command.Nothing.rawValue ], replyHandler: { (_) in
+        }, errorHandler: nil)
     }
 }

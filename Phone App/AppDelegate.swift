@@ -15,7 +15,7 @@ import UIKit
 let SphereIOProject = "ecomhack-demo-67"
 
 private extension Array {
-    func randomItem() -> T {
+    func randomItem() -> Element {
         let index = Int(arc4random_uniform(UInt32(self.count)))
         return self[index]
     }
@@ -48,8 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!) {
-        if let reply = reply, userInfo = userInfo, command = userInfo[CommandIdentifier] as? String {
+    func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: ([NSObject : AnyObject]?) -> Void) {
+        if let userInfo = userInfo, command = userInfo[CommandIdentifier] as? String {
             handleCommand(command, reply)
         } else {
             fatalError("Invalid WatchKit extension request :(")
@@ -106,7 +106,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
                                 if let order = result.value {
                                     self.sphereClient.setState(.Complete, forOrder: order) { (result) in
-                                        println("Ordered successfully.")
+                                        print("Ordered successfully.")
                                     }
                                 } else {
                                     fatalError("Failed to set order to complete state.")

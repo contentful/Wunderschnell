@@ -16,7 +16,7 @@ private struct AuthRequest: URLRequestConvertible {
     private let grantAttributeName: String
     private let grantType: String
 
-    var URLRequest: NSURLRequest {
+    var URLRequest: NSMutableURLRequest {
         if let URL = NSURL(string: "https://api.sandbox.paypal.com/v1/oauth2/token") {
             let URLRequest = NSMutableURLRequest(URL: URL)
             URLRequest.HTTPMethod = Method.POST.rawValue
@@ -57,8 +57,8 @@ public class PayPalClient {
         let parameters: [String:AnyObject] = [ "intent":"authorize", "payer":["payment_method":"paypal"], "transactions": [ [ "amount": [ "currency": currency, "total": amount ], "description":  description ] ]]
 
         Alamofire.request(payPalRequest("payments/payment", .POST, parameters))
-            .responseJSON { (_, _, JSON, _) in
-                if let JSON = JSON as? [String:AnyObject], transactions = JSON["transactions"] as? [[String:AnyObject]], relatedResources = transactions.first?["related_resources"] as? [[String:AnyObject]], authorization = relatedResources.first?["authorization"] as? [String:AnyObject], id = authorization["id"] as? String {
+            .responseJSON { (_, _, result) in
+                if let JSON = result.value as? [String:AnyObject], transactions = JSON["transactions"] as? [[String:AnyObject]], relatedResources = transactions.first?["related_resources"] as? [[String:AnyObject]], authorization = relatedResources.first?["authorization"] as? [String:AnyObject], id = authorization["id"] as? String {
                     completion(paymentId: id)
                 } else {
                     fatalError("Did not receive ID for payment")
@@ -88,8 +88,8 @@ public class PayPalClient {
         let grantType = metadataId == "" ? "refresh_token" : "authorization_code"
 
         Alamofire.request(AuthRequest(clientId: clientId, clientSecret: clientSecret, code: code, grantAttributeName: grantAttributeName, grantType: grantType))
-            .responseJSON { (_, _, JSON, _) in
-                if let JSON = JSON as? [String:AnyObject] {
+            .responseJSON { (_, _, result) in
+                if let JSON = result.value as? [String:AnyObject] {
                     if let refreshToken = JSON["refresh_token"] as? String {
                         self.refreshToken = refreshToken
                     }
@@ -116,10 +116,10 @@ public class PayPalClient {
             let parameters: [String: AnyObject] = [ "amount": [ "currency": currency, "total": amount ], "is_final_capture": true]
 
             Alamofire.request(self.payPalRequest(URL, .POST, parameters))
-                .responseJSON { (_, _, JSON, _) in
+                .responseJSON { (_, _, result) in
                     //println(JSON)
 
-                    if let JSON = JSON as? [String:AnyObject], amount = JSON["amount"] as? [String:AnyObject] {
+                    if let JSON = result.value as? [String:AnyObject], _ = JSON["amount"] as? [String:AnyObject] {
                         completion(paid: true)
                     } else {
                         completion(paid: false)

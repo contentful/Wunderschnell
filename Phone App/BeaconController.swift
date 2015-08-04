@@ -35,7 +35,7 @@ class BeaconController: NSObject, CLLocationManagerDelegate {
     func refresh() {
         regions = beacons.map({ (beacon: Beacon) -> CLBeaconRegion in
             //NSLog("Will range beacon %@ with major %@, minor %@", beacon.name, beacon.major, beacon.minor)
-            return CLBeaconRegion(proximityUUID: NSUUID(UUIDString: beacon.uuid), major: CLBeaconMajorValue(beacon.major.integerValue), minor: CLBeaconMinorValue(beacon.minor.integerValue), identifier: beacon.identifier)
+            return CLBeaconRegion(proximityUUID: NSUUID(UUIDString: beacon.uuid)!, major: CLBeaconMajorValue(beacon.major.integerValue), minor: CLBeaconMinorValue(beacon.minor.integerValue), identifier: beacon.identifier)
         })
     }
 
@@ -45,19 +45,18 @@ class BeaconController: NSObject, CLLocationManagerDelegate {
 
     // MARK: CLLocationManagerDelegate
 
-    func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!,
-        inRegion region: CLBeaconRegion!) {
-            let beacon = self.beacons[find(regions, region)!]
+    func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
+        let beacon = self.beacons[regions.indexOf(region)!]
 
-            let filteredBeacons = (beacons as? [CLBeacon])!.filter({ (beacon: CLBeacon) -> Bool in return beacon.proximity == .Immediate })
+        let filteredBeacons = beacons.filter({ (beacon: CLBeacon) -> Bool in return beacon.proximity == .Immediate })
 
-            //NSLog("Ranged beacon %@ as Immediate", beacon.name)
+        //NSLog("Ranged beacon %@ as Immediate", beacon.name)
 
-            if (filteredBeacons.count > 0) {
-                let accuracy = (beacons.first as? CLBeacon)!.accuracy
-                beaconCallback(beacon: beacon, accuracy: accuracy)
-            } else {
-                outOfRangeCallback()
-            }
+        if (filteredBeacons.count > 0) {
+            let accuracy = (beacons.first)!.accuracy
+            beaconCallback(beacon: beacon, accuracy: accuracy)
+        } else {
+            outOfRangeCallback()
+        }
     }
 }

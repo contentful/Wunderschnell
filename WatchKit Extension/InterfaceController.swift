@@ -9,6 +9,7 @@
 import Cube
 import Foundation
 import MMWormhole
+import WatchConnectivity
 import WatchKit
 
 class InterfaceController: WKInterfaceController {
@@ -20,21 +21,19 @@ class InterfaceController: WKInterfaceController {
     override func willActivate() {
         super.willActivate()
 
-        WKInterfaceController.openParentApplication([ CommandIdentifier: Command.GetProduct.rawValue ]) { (data, error) in
-            if let data = data, productData = data[Reply.Product.rawValue] as? [String:AnyObject] {
-                let product = Product(productData)
+        WCSession.defaultSession().sendMessage([ CommandIdentifier: Command.GetProduct.rawValue ], replyHandler: { (data) in
+            let product = Product(data[Reply.Product.rawValue] as! [String:AnyObject])
 
-                if let amount = product.price["amount"], currency = product.price["currency"] {
-                    self.productPrice.setText("\(amount) \(currency)")
-                }
+            if let amount = product.price["amount"], currency = product.price["currency"] {
+                self.productPrice.setText("\(amount) \(currency)")
+            }
 
-                NSURLConnection.sendAsynchronousRequest(NSURLRequest(URL: NSURL(string: product.imageUrl)!), queue: NSOperationQueue.mainQueue()) { (_, data, _) in
-                    if let data = data {
-                        self.productImage.setImage(UIImage(data: data))
-                    }
+            NSURLSession.sharedSession().dataTaskWithRequest(NSURLRequest(URL: NSURL(string: product.imageUrl)!)) { (data, _, _) in
+                if let data = data {
+                    self.productImage.setImage(UIImage(data: data))
                 }
             }
-        }
+        }, errorHandler: nil)
     }
 
     @IBAction func tapped() {
@@ -46,8 +45,8 @@ class InterfaceController: WKInterfaceController {
             }
         }
 
-        WKInterfaceController.openParentApplication([ CommandIdentifier: Command.MakeOrder.rawValue ]) { (_, _) in
+        WCSession.defaultSession().sendMessage([ CommandIdentifier: Command.MakeOrder.rawValue ], replyHandler: { (_) in
             // Seems like openParentApplication() has a too short timeout for our orders.
-        }
+        }, errorHandler: nil)
     }
 }

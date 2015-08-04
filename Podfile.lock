@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (1.2.1)
+  - Alamofire (1.3.0)
   - Cube (0.0.1):
     - Alamofire
     - Result
@@ -27,7 +27,7 @@ PODS:
   - HYPNorwegianAccountNumber (1.2.1)
   - HYPNorwegianSSN (1.10.1)
   - ISO8601DateFormatter (0.7)
-  - KeychainAccess (1.2.0)
+  - KeychainAccess (1.2.1)
   - Keys (1.0.0)
   - MBProgressHUD (0.9.1)
   - MMWormhole (1.1.1):
@@ -45,30 +45,45 @@ PODS:
   - NSString-HYPWordExtractor (1.2)
   - NSString-ZENInflections (1.2)
   - PayPal-iOS-SDK (2.10.1)
-  - Result (0.3.2)
+  - Result (0.6-beta.1)
   - UIButton-ANDYHighlighted (0.2.1)
   - UIViewController-HYPKeyboardToolbar (0.1)
 
 DEPENDENCIES:
-  - Alamofire
+  - Alamofire (from `https://github.com/neonichu/Alamofire.git`, branch `swift-2.0`)
   - Cube (from `../Cube`)
   - Form (HEAD)
-  - KeychainAccess
+  - KeychainAccess (from `https://github.com/kishikawakatsumi/KeychainAccess.git`,
+    branch `swift-2.0`)
   - Keys (from `Pods/CocoaPodsKeys`)
   - MBProgressHUD
   - MMWormhole
   - PayPal-iOS-SDK
-  - Result
+  - Result (>= 0.6-beta.1)
 
 EXTERNAL SOURCES:
+  Alamofire:
+    :branch: swift-2.0
+    :git: https://github.com/neonichu/Alamofire.git
   Cube:
     :path: ../Cube
+  KeychainAccess:
+    :branch: swift-2.0
+    :git: https://github.com/kishikawakatsumi/KeychainAccess.git
   Keys:
     :path: Pods/CocoaPodsKeys
 
+CHECKOUT OPTIONS:
+  Alamofire:
+    :commit: 77900e2236db0c4df5781d6bd0a9cdbeff137ed2
+    :git: https://github.com/neonichu/Alamofire.git
+  KeychainAccess:
+    :commit: 7879a49b81c553ad9b40cbafda34a881648e2ff3
+    :git: https://github.com/kishikawakatsumi/KeychainAccess.git
+
 SPEC CHECKSUMS:
-  Alamofire: 1acfdf179aff68b41a48dff70c1ac7fa263e2bcb
-  Cube: bde932fbccdcea828246f70b88ce4b743005bf12
+  Alamofire: e57db85401895fda01783b3b9bda5b32d9f347ff
+  Cube: 30b26e85269bbf7c0984f1933875fc094a5a3949
   Form: 95b18c872ca40ecdadbde38ebded2cd41c50b520
   Hex: acf6d0dc34658d3d44047a992bfd09190c87e6e7
   HYPImagePicker: 5c6e463ec15ae6b647355eb11f3f310342616fbf
@@ -76,7 +91,7 @@ SPEC CHECKSUMS:
   HYPNorwegianAccountNumber: b0062d7419d217123dff0ef04f1931ed5f1e3bbf
   HYPNorwegianSSN: 75e8b512f5a7be80dad61c3ba26494a5459a5b7a
   ISO8601DateFormatter: ab926648eebe497f4d167c0fd083992f959f1274
-  KeychainAccess: 6ff20bd4990b4840d8bde4e977f8c58e0fe7f3c1
+  KeychainAccess: 2ffa8b1b7130263bb7fe90b359d778696fc2d8ce
   Keys: 7d2ff6ff42f6903358267ce56e9392f83c31acfe
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   MMWormhole: 941cd168b4afd6073f883b82944d6eded4e00203
@@ -90,7 +105,7 @@ SPEC CHECKSUMS:
   NSString-HYPWordExtractor: 7484da8d2d23e41b24b0bdb218293ab349f9f650
   NSString-ZENInflections: 35ae6d02981b1def07bd6dc8e6455e827453bc29
   PayPal-iOS-SDK: b7143e1e3ce51a82833c50bdac696a7a40852684
-  Result: 81c3da19af8fbc2ecfb21edce137dc5b23b3659b
+  Result: af24e3e57ab81005ec4221a53fd36dc1e7a52869
   UIButton-ANDYHighlighted: 3f5e9fb68fb3425bd9fddc030af452d3ac9d1613
   UIViewController-HYPKeyboardToolbar: d5cb85447caeaf9e0e7ed575ce3b1576c7d53dd8
 

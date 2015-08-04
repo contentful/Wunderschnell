@@ -22,7 +22,7 @@ class AddressFormViewController: FORMViewController {
     }
 
     private static func addressJSON() -> [[String:AnyObject]] {
-        let keys = [String](DefaultAddress.toDictionary().keys).sorted { $0 < $1 }
+        let keys = DefaultAddress.toDictionary().keys.sort() { $0 < $1 }
         let fields: [[String:AnyObject]] = keys.map { (key) in
             return [ "id": key, "title": key, "type": "text" ]
         }
