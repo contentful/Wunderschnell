@@ -76,7 +76,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Alamofire:
-    :commit: 77900e2236db0c4df5781d6bd0a9cdbeff137ed2
+    :commit: 1b7b1f1aa4243004369c9e741d08ff4cdb072470
     :git: https://github.com/neonichu/Alamofire.git
   Cube:
     :commit: bd11819e06540ad1c231ba89ae0431bdcc46cc84
