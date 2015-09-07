@@ -16,6 +16,7 @@ use_frameworks!
 def shared_pods
 
 pod 'Cube', :git => 'https://github.com/contentful-labs/Cube.git', :branch => 'swift-2.0'
+#pod 'Cube', :path => '../Cube'
 pod 'MMWormhole'
 
 end
@@ -24,7 +25,7 @@ link_with 'WatchButton'
 
 shared_pods
 
-pod 'Alamofire', :git => 'https://github.com/neonichu/Alamofire.git', :branch => 'swift-2.0'
+pod 'Alamofire', :git => 'https://github.com/alamofire/Alamofire.git', :branch => 'swift-2.0'
 #pod 'ContentfulDeliveryAPI', :path => '../contentful-delivery-api'
 pod 'Form', :head
 pod 'KeychainAccess', :git => 'https://github.com/kishikawakatsumi/KeychainAccess.git', :branch => 'swift-2.0'
