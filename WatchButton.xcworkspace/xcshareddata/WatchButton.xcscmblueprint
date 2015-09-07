@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1F11C153B7ACCE97334A74ED7522D4780A4D0750",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "1F11C153B7ACCE97334A74ED7522D4780A4D0750" : 0,
+    "EB9FF6CC2185ECB3EFA62740E51DAF662F69DD0D" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "A512FC55-DA6E-45AF-B1B7-A65024CB2B87",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "1F11C153B7ACCE97334A74ED7522D4780A4D0750" : "WatchButton\/",
+    "EB9FF6CC2185ECB3EFA62740E51DAF662F69DD0D" : "Cube\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "WatchButton",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "WatchButton.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:contentful-labs\/Wunderschnell.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1F11C153B7ACCE97334A74ED7522D4780A4D0750"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:contentful-labs\/Cube.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EB9FF6CC2185ECB3EFA62740E51DAF662F69DD0D"
+    }
+  ]
+}

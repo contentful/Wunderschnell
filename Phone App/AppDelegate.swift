@@ -9,6 +9,7 @@
 import Cube
 import Keys
 import MMWormhole
+import WatchConnectivity
 import UIKit
 
 // Change the used sphere.io project here
@@ -22,7 +23,7 @@ private extension Array {
 }
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     private let beaconController = BeaconController()
     private let keys = WatchbuttonKeys()
     private var sphereClient: SphereIOClient!
@@ -32,9 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        PayPalMobile.initializeWithClientIdsForEnvironments([ PayPalEnvironmentSandbox: WatchbuttonKeys().payPalSandboxClientId()])
+        WCSession.defaultSession().delegate = self
+        WCSession.defaultSession().activateSession()
 
-        sphereClient = SphereIOClient(clientId: keys.sphereIOClientId(), clientSecret: keys.sphereIOClientSecret(), project: SphereIOProject)
+        PayPalMobile.initializeWithClientIdsForEnvironments([ PayPalEnvironmentSandbox: WatchbuttonKeys().payPalSandboxClientId()])
 
         beaconController.beaconCallback = { (beacon, _) in
             self.wormhole.passMessageObject(true, identifier: Reply.BeaconRanged.rawValue)
@@ -48,9 +50,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: ([NSObject : AnyObject]?) -> Void) {
-        if let userInfo = userInfo, command = userInfo[CommandIdentifier] as? String {
-            handleCommand(command, reply)
+    func initializeSphereClient() {
+        if sphereClient == nil {
+            sphereClient = SphereIOClient(clientId: keys.sphereIOClientId(), clientSecret: keys.sphereIOClientSecret(), project: SphereIOProject)
+        }
+    }
+
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+        if let command = message[CommandIdentifier] as? String {
+            handleCommand(command, replyHandler)
         } else {
             fatalError("Invalid WatchKit extension request :(")
         }
@@ -62,6 +70,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Helpers
 
     func fetchSelectedProduct(completion: () -> ()) {
+        initializeSphereClient()
+
         if selectedProduct != nil {
             completion()
             return
@@ -77,7 +87,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    private func handleCommand(command: String, _ reply: (([NSObject : AnyObject]!) -> Void)) {
+    private func handleCommand(command: String, _ reply: (([String : AnyObject]) -> Void)) {
+        initializeSphereClient()
+
         switch(Command(rawValue: command)!) {
         case .GetProduct:
             fetchSelectedProduct() {

@@ -12,7 +12,7 @@ import MMWormhole
 import WatchConnectivity
 import WatchKit
 
-class InterfaceController: WKInterfaceController {
+class InterfaceController: WKInterfaceController, WCSessionDelegate {
     let wormhole = MMWormhole(applicationGroupIdentifier: AppGroupIdentifier, optionalDirectory: DirectoryIdentifier)
 
     @IBOutlet weak var productImage: WKInterfaceImage!
@@ -21,7 +21,11 @@ class InterfaceController: WKInterfaceController {
     override func willActivate() {
         super.willActivate()
 
-        WCSession.defaultSession().sendMessage([ CommandIdentifier: Command.GetProduct.rawValue ], replyHandler: { (data) in
+        let session = WCSession.defaultSession()
+        session.delegate = self
+        session.activateSession()
+
+        session.sendMessage([ CommandIdentifier: Command.GetProduct.rawValue ], replyHandler: { (data) in
             let product = Product(data[Reply.Product.rawValue] as! [String:AnyObject])
 
             if let amount = product.price["amount"], currency = product.price["currency"] {
@@ -33,7 +37,9 @@ class InterfaceController: WKInterfaceController {
                     self.productImage.setImage(UIImage(data: data))
                 }
             }
-        }, errorHandler: nil)
+        }) { (error) in
+            print(error)
+        }
     }
 
     @IBAction func tapped() {
