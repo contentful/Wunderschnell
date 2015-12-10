@@ -28,7 +28,7 @@ class BeaconController: NSObject, CLLocationManagerDelegate {
             self.locationManager.delegate = self
             self.locationManager.requestAlwaysAuthorization()
 
-            self.regions.map({ (region) -> Void in self.locationManager.startRangingBeaconsInRegion(region) })
+            let _ = self.regions.map({ (region) -> Void in self.locationManager.startRangingBeaconsInRegion(region) })
         }
     }
 
@@ -40,7 +40,7 @@ class BeaconController: NSObject, CLLocationManagerDelegate {
     }
 
     func stop() {
-        regions.map({ (region) -> Void in self.locationManager.stopRangingBeaconsInRegion(region) })
+        let _ = regions.map({ (region) -> Void in self.locationManager.stopRangingBeaconsInRegion(region) })
     }
 
     // MARK: CLLocationManagerDelegate

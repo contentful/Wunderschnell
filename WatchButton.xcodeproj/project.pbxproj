@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4E203B455D3ECAC8B1AA8892 /* Pods_WatchButton_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B612E7C95BC7692FDF64C9 /* Pods_WatchButton_WatchKit_Extension.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		4E203B455D3ECAC8B1AA8892 /* Pods_WatchButton_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B612E7C95BC7692FDF64C9 /* Pods_WatchButton_WatchKit_Extension.framework */; };
 		A15AB65C1AFECD32000DEA74 /* BeaconController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15AB65B1AFECD32000DEA74 /* BeaconController.swift */; };
 		A15AB65E1AFECD8A000DEA74 /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15AB65D1AFECD8A000DEA74 /* Beacon.swift */; };
 		A19B89B31AFEEC6C00E15887 /* AddressFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19B89B21AFEEC6C00E15887 /* AddressFormViewController.swift */; };
@@ -28,7 +28,7 @@
 		A1ED03471AFEB10B00570757 /* PaymentAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ED03461AFEB10B00570757 /* PaymentAlert.swift */; };
 		A1F8A7F81B70BA1300D22AC4 /* WatchButton WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A1CF8D551AFE1332005EDE51 /* WatchButton WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A1F8A7FB1B70BA1300D22AC4 /* WatchButton WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A1CF8D611AFE1332005EDE51 /* WatchButton WatchKit App.app */; };
-		F6312121D73E165B1EEE3D8D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD8A85CEC34E4A816905356 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		F6312121D73E165B1EEE3D8D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD8A85CEC34E4A816905356 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */

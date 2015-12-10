@@ -1,12 +1,12 @@
 PODS:
-  - Alamofire (2.0.0-beta.4)
+  - Alamofire (2.0.2)
+  - CardIO (5.2.2)
   - Cube (0.0.1):
-    - Alamofire
-    - Result
-  - Form (HEAD based on 3.5.0):
-    - Hex (~> 1.1.1)
+    - Alamofire (~> 2.0)
+    - Result (>= 0.6-beta.1)
+  - Form (HEAD based on 3.7.2):
+    - Hex (~> 3.0.0)
     - HYP8601 (~> 0.7.2)
-    - HYPImagePicker (~> 0.3)
     - HYPMathParser (~> 0.4.1)
     - HYPNorwegianAccountNumber (~> 1.2.1)
     - HYPNorwegianSSN (~> 1.10.2)
@@ -15,46 +15,49 @@ PODS:
     - NSJSONSerialization-ANDYJSONFile (~> 1.1)
     - NSObject-HYPTesting (~> 1.2)
     - NSString-HYPContainsString (~> 0.1)
-    - NSString-HYPFormula (~> 1.6.1)
+    - NSString-HYPFormula (~> 1.6.2)
     - NSString-HYPRelationshipParser (~> 0.4.1)
     - NSString-HYPWordExtractor (~> 1.2)
     - NSString-ZENInflections (~> 1.2)
     - UIButton-ANDYHighlighted (~> 0.2.1)
     - UIViewController-HYPKeyboardToolbar (~> 0.1)
-  - Hex (1.1.1)
+  - Hex (3.0.0)
   - HYP8601 (0.7.2)
-  - HYPImagePicker (0.3)
   - HYPMathParser (0.4.1)
   - HYPNorwegianAccountNumber (1.2.1)
   - HYPNorwegianSSN (1.10.2)
-  - KeychainAccess (1.2.1)
+  - KeychainAccess (2.3.2)
   - Keys (1.0.0)
   - MBProgressHUD (0.9.1)
-  - MMWormhole (1.1.1):
-    - MMWormhole/Core (= 1.1.1)
-  - MMWormhole/Core (1.1.1)
-  - NSDictionary-ANDYSafeValue (0.3)
+  - MMWormhole (2.0.0):
+    - MMWormhole/Core (= 2.0.0)
+  - MMWormhole/Core (2.0.0)
+  - NSDictionary-ANDYSafeValue (0.3.1)
   - NSDictionary-HYPNestedAttributes (0.4.1):
     - NSString-HYPRelationshipParser (~> 0.4.1)
   - NSJSONSerialization-ANDYJSONFile (1.1)
   - NSObject-HYPTesting (1.2)
   - NSString-HYPContainsString (0.1)
-  - NSString-HYPFormula (1.6.1):
+  - NSString-HYPFormula (1.6.2):
     - NSString-HYPWordExtractor
   - NSString-HYPRelationshipParser (0.4.1)
   - NSString-HYPWordExtractor (1.2)
   - NSString-ZENInflections (1.2)
-  - PayPal-iOS-SDK (2.11.2)
+  - PayPal-iOS-SDK (2.12.8):
+    - PayPal-iOS-SDK/CardIO (= 2.12.8)
+    - PayPal-iOS-SDK/Core (= 2.12.8)
+  - PayPal-iOS-SDK/CardIO (2.12.8):
+    - CardIO (~> 5.2.2)
+  - PayPal-iOS-SDK/Core (2.12.8)
   - Result (0.6-beta.1)
   - UIButton-ANDYHighlighted (0.2.1)
   - UIViewController-HYPKeyboardToolbar (0.1)
 
 DEPENDENCIES:
-  - Alamofire (from `https://github.com/alamofire/Alamofire.git`, branch `swift-2.0`)
-  - Cube (from `../Cube`)
+  - Alamofire (~> 2.0)
+  - Cube (from `https://github.com/contentful-labs/Cube.git`)
   - Form (HEAD)
-  - KeychainAccess (from `https://github.com/kishikawakatsumi/KeychainAccess.git`,
-    branch `swift-2.0`)
+  - KeychainAccess (from `https://github.com/kishikawakatsumi/KeychainAccess.git`)
   - Keys (from `Pods/CocoaPodsKeys`)
   - MBProgressHUD
   - MMWormhole
@@ -62,51 +65,49 @@ DEPENDENCIES:
   - Result (>= 0.6-beta.1)
 
 EXTERNAL SOURCES:
-  Alamofire:
-    :branch: swift-2.0
-    :git: https://github.com/alamofire/Alamofire.git
   Cube:
-    :path: ../Cube
+    :git: https://github.com/contentful-labs/Cube.git
   KeychainAccess:
-    :branch: swift-2.0
     :git: https://github.com/kishikawakatsumi/KeychainAccess.git
   Keys:
     :path: Pods/CocoaPodsKeys
 
 CHECKOUT OPTIONS:
-  Alamofire:
-    :commit: 1108ae4461baa99d9c4898c213ec3e2e2956fab3
-    :git: https://github.com/alamofire/Alamofire.git
+  Cube:
+    :commit: 52b43b721811c2bd992d9fa5f10764b0b0dd24c4
+    :git: https://github.com/contentful-labs/Cube.git
   KeychainAccess:
-    :commit: 7879a49b81c553ad9b40cbafda34a881648e2ff3
+    :commit: 11b935868a5c3af1fe7222d02da7215ccdfc88e4
     :git: https://github.com/kishikawakatsumi/KeychainAccess.git
 
 SPEC CHECKSUMS:
-  Alamofire: 20df1a4740a69d7cf6caf7fd06b8a8fc782f1ebd
-  Cube: 30b26e85269bbf7c0984f1933875fc094a5a3949
-  Form: c64955d5c33c3e1dd0536d6cb7a0b1e9d567dffc
-  Hex: acf6d0dc34658d3d44047a992bfd09190c87e6e7
+  Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
+  CardIO: 2460db0f4936f3441b08d51e3904b436d77ec8fc
+  Cube: 84d69281a1432b1fd8443c26b8ca559905037830
+  Form: 01297c7d084fcda402e95e672e322d9c0cb2bcf6
+  Hex: ee430da9c4412d9196366ae5327f279021dc03eb
   HYP8601: 0118757c1332620748c75e7218e7b6b849686d06
-  HYPImagePicker: 5c6e463ec15ae6b647355eb11f3f310342616fbf
   HYPMathParser: 146a4981427a0b46cc9af823b210bfefdf0a7107
   HYPNorwegianAccountNumber: b0062d7419d217123dff0ef04f1931ed5f1e3bbf
   HYPNorwegianSSN: 1eb54f1488ac24cdd7d0aee34e10d0f826c27fc1
-  KeychainAccess: 2ffa8b1b7130263bb7fe90b359d778696fc2d8ce
-  Keys: 7d2ff6ff42f6903358267ce56e9392f83c31acfe
+  KeychainAccess: 96575483583f4640739a5cc26551803d0d34e0dd
+  Keys: 9c35bf00f612ee1d48556f4a4b9b4551e224e90f
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
-  MMWormhole: 941cd168b4afd6073f883b82944d6eded4e00203
-  NSDictionary-ANDYSafeValue: c15ff39a6b1b82a52ea277c64520c7b574715afc
+  MMWormhole: 0cd3fd35a9118b2e2d762b499f54eeaace0be791
+  NSDictionary-ANDYSafeValue: 2d7adf339b6e302d71fec5f1d71ae00aacda993e
   NSDictionary-HYPNestedAttributes: 783d3adcf9f8e9a554004ee225f1bc0cdf0cfdfe
   NSJSONSerialization-ANDYJSONFile: 4a92ca174d5ccde13015e853e9eb62440459b478
   NSObject-HYPTesting: fadde70c75061b731b313c390e20777aed0a914d
   NSString-HYPContainsString: a8147bbb90b9aca02f69d12546b4d2938a5d01dc
-  NSString-HYPFormula: 0d0ecc4725efdcfc74e079364aa5c2014c18f9ec
+  NSString-HYPFormula: c1d166886afd1cfd139f24ab01bd63ad8f4cc360
   NSString-HYPRelationshipParser: 7fa231131e408f26b3b72a41157aa6620a195b4d
   NSString-HYPWordExtractor: 7484da8d2d23e41b24b0bdb218293ab349f9f650
   NSString-ZENInflections: 35ae6d02981b1def07bd6dc8e6455e827453bc29
-  PayPal-iOS-SDK: abce7af48a766d73604726e0de78e9ac248eeb7b
+  PayPal-iOS-SDK: 66f4f6e2f0d0c31bae81642c1518bb72ac18f1a6
   Result: af24e3e57ab81005ec4221a53fd36dc1e7a52869
   UIButton-ANDYHighlighted: 3f5e9fb68fb3425bd9fddc030af452d3ac9d1613
   UIViewController-HYPKeyboardToolbar: d5cb85447caeaf9e0e7ed575ce3b1576c7d53dd8
 
-COCOAPODS: 0.38.2
+PODFILE CHECKSUM: 4d39f40914ea54777e672d2b2b8aa60996e50302
+
+COCOAPODS: 0.39.0

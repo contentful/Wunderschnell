@@ -36,6 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         WCSession.defaultSession().delegate = self
         WCSession.defaultSession().activateSession()
 
+        // TODO: WCSession.defaultSession().reachable
+
         PayPalMobile.initializeWithClientIdsForEnvironments([ PayPalEnvironmentSandbox: WatchbuttonKeys().payPalSandboxClientId()])
 
         beaconController.beaconCallback = { (beacon, _) in
